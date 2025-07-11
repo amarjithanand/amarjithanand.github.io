@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,219 +8,297 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0e0e0e;
-      --text-light: #f1f1f1;
+      --bg-dark: #101014;
+      --text-light: #f5f6fa;
       --accent: #e94d1c;
-      --muted: #888;
+      --muted: #a0a0a0;
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'Inter', sans-serif;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+      overflow: hidden;
     }
-
     body {
       font-family: var(--font-sans);
       background: var(--bg-dark);
       color: var(--text-light);
-      line-height: 1.6;
-      font-size: 18px; /* Increased font size */
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      font-size: 18px;
     }
-
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: #1a1a1a;
+      background: #181823e6;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 2rem;
       z-index: 1000;
-      box-shadow: 0 1px 4px rgba(255,255,255,0.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      backdrop-filter: blur(6px);
     }
-
     .logo {
       font-family: var(--font-serif);
-      font-size: 1.8rem;
-      font-weight: 600;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--accent);
     }
-
     nav {
       display: flex;
     }
-
     nav a {
-      margin-left: 1.5rem;
+      margin-left: 2rem;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text-light);
-      transition: 0.3s;
+      font-size: 1.08rem;
+      transition: color 0.2s;
+      position: relative;
     }
-
-    nav a:hover {
+    nav a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+    }
+    nav a:hover, nav a:focus {
       color: var(--accent);
     }
-
+    nav a:hover::after, nav a:focus::after {
+      width: 100%;
+    }
     .burger {
       display: none;
       flex-direction: column;
       cursor: pointer;
     }
-
     .burger span {
       height: 3px;
       width: 25px;
-      background: white;
+      background: var(--text-light);
       margin: 4px 0;
+      border-radius: 2px;
       transition: 0.3s;
     }
-
-    .nav-links {
-      display: flex;
-    }
-
-    section {
-      padding: 100px 20px 60px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .hero {
+    .nav-links { display: flex; }
+    
+    /* Section transition effect */
+    .section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
       height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-        url('https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/image.png') center/cover no-repeat;
+      width: 100vw;
+      scroll-snap-align: start;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
+      padding-top: 80px;
+      box-sizing: border-box;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
+      background: linear-gradient(rgba(16,16,20,0.8), rgba(16,16,20,0.9)),
+        url('https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/image.png') center/cover no-repeat;
       color: white;
-      padding: 2rem;
+      text-align: center;
     }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-family: var(--font-serif);
-    }
-
     .hero p {
-      color: #ccc;
+      color: var(--accent);
       font-size: 1.2rem;
-      margin-top: 0.5rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
     }
-
-    .hero .btn-group {
-      margin-top: 2rem;
+    .hero h1 {
+      font-size: 2.7rem;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      line-height: 1.15;
+    }
+    .btn-group {
+      margin-top: 2.2rem;
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      flex-direction: row;
+      gap: 1.2rem;
+      justify-content: center;
     }
-    #about p {
-      color: #ccc;
-      font-size: 1.52rem;
-      margin-top: 0.5rem;
-    }
-
     .btn {
-      border: 2px solid var(--text-light);
-      padding: 14px 28px;
-      font-size: 1rem;
+      border: 2px solid var(--accent);
+      padding: 13px 32px;
+      font-size: 1.05rem;
       background: transparent;
       color: var(--text-light);
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.2s;
       text-decoration: none;
       display: inline-block;
+      border-radius: 6px;
+      font-weight: 600;
     }
-
-    .btn:hover {
+    .btn:hover, .btn:focus {
       background: var(--accent);
-      color: white;
+      color: #fff;
       border-color: var(--accent);
     }
-
     .btn.outline {
       background: transparent;
       border-color: var(--text-light);
+      color: var(--text-light);
     }
-
+    .btn.outline:hover, .btn.outline:focus {
+      background: var(--text-light);
+      color: var(--accent);
+      border-color: var(--text-light);
+    }
     h2.section-title {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       font-family: var(--font-serif);
       margin-bottom: 1.2rem;
-      position: relative;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
-
-    h2.section-title::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 30px;
-      height: 3px;
-      background: var(--accent);
+    .section-content {
+      max-width: 700px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
-
-    .experience, .awards, .skills {
-      margin-top: 2rem;
+    #about p {
+      color: #e0e0e0;
+      font-size: 1.5rem;
+      text-align: justify;
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+      background: rgba(30,30,40,0.7);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      width: 90%;
+      max-width: 600px;
     }
-
-    .item {
-      margin-bottom: 1rem;
+    #experience .item, #education .item {
+      margin-bottom: 2.2rem;
+      background: rgba(30,30,40,0.7);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      width: 100%;
+      max-width: 600px;
     }
-
-    .item h4 {
-      font-weight: 600;
-      font-size: 1.2rem;
+    #experience .item h4, #education .item h4 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      color: var(--text-light);
     }
-
-    .item p {
+    #experience .item .meta, #education .item .meta {
       color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 0.7rem;
+      font-weight: 500;
+    }
+    .responsibilities {
+      margin: 0.7em 0 0 1.2em;
+      padding: 0;
       font-size: 1rem;
+      color: #b0b0b0;
+      list-style: disc inside;
     }
-
-    footer {
-      background: #121212;
+    .responsibilities li {
+      margin-bottom: 0.4em;
+      line-height: 1.6;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2.5rem;
+      margin-top: 1.2rem;
+      justify-content: center;
+      max-width: 700px;
+    }
+    .skill-badge {
+      background: #232336;
+      color: var(--text-light);
+      padding: 0.55em 1.2em;
+      border-radius: 20px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      border: 1px solid #232336;
+      transition: background 0.15s;
+    }
+    .skill-badge:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    footer.section {
+      background: #161622;
       color: white;
-      padding: 60px 20px;
       text-align: center;
+      justify-content: flex-start;
     }
-
     .contact-heading {
       font-family: var(--font-serif);
       font-size: 2rem;
       margin-bottom: 1rem;
+      color: var(--accent);
+      font-weight: 700;
     }
-
     .footer-description {
       max-width: 600px;
       margin: 0 auto 2rem;
       color: #aaa;
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
-
     .footer-links {
-      margin-bottom: 1rem;
+      margin-bottom: 1.3rem;
     }
-
     .footer-links a {
-      margin: 0 10px;
-      color: white;
+      margin: 0 12px;
+      color: #f5f6fa;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 1.08rem;
+      transition: color 0.2s;
     }
-
-    .footer-links a:hover {
+    .footer-links a:hover, .footer-links a:focus {
       color: var(--accent);
     }
-
     .footer-actions .btn {
-      margin: 10px;
+      margin: 10px 8px;
     }
+    .footer-copyright {
+      margin-top: 2.5rem;
+      color: #444;
+      font-size: 0.96rem;
+    }
+    #main {
+      height: 100vh;
+      width: 100vw;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+    #main::-webkit-scrollbar { width: 0; background: transparent; }
+    #main { -ms-overflow-style: none; scrollbar-width: none; }
 
     @media(max-width: 768px) {
       .nav-links {
@@ -227,110 +306,196 @@
         position: absolute;
         top: 70px;
         left: 0;
-        background: #1a1a1a;
+        background: #181823;
         width: 100%;
         flex-direction: column;
-        padding: 1rem 2rem;
+        padding: 1.2rem 2rem;
       }
-
       .nav-links a {
         margin: 1rem 0;
         font-size: 1.1rem;
       }
-
       .burger {
         display: flex;
       }
-
       .nav-active {
         display: flex;
       }
-
       .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
-
       .hero p {
         font-size: 1rem;
+      }
+      .skills-list {
+        flex-direction: column;
+        gap: 0.7rem 0;
+      }
+      .section-content {
+        padding: 0 0.3rem;
+      }
+      #experience .item, #education .item {
+        padding: 1rem 0.7rem;
       }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <div class="logo">Amarjith.</div>
-    <div class="burger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <nav class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#awards">Awards</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="logo">Amarjith Anand</div>
   </header>
-
-  <section class="hero">
-    <p>HELLO</p>
-    <h1>I'm Amarjith Anand,<br/>a Computer Science Graduate.</h1>
-    <div class="btn-group">
-      <a href="#about" class="btn">MORE ABOUT ME</a>
-      <a href="#contact" class="btn outline">GET IN TOUCH</a>
-    </div>
-  </section>
-
-  <section id="about">
-  <h2 class="section-title">About Me.</h2>
-  <p>
-    I’m Amarjith Anand, a passionate and detail-oriented Computer Science graduate with a strong foundation in programming, problem-solving, and user experience design. My academic journey has equipped me with skills in software development, data structures, algorithms, and full-stack technologies, which I continuously refine through personal projects and real-world applications.
-    <br><br><br>
-    My final-year project, <em>Migrant Workers Registration and Local Job Management</em>, demonstrates my ability to address real-life challenges with scalable digital solutions. I enjoy creating interfaces that are not only functional but also intuitive and visually appealing. I believe good design is as important as strong logic, and I strive to blend both in every project I work on.
-    <br><br>  </p>
-</section>
-
-  <section id="experience">
-    <h2 class="section-title">Education</h2>
-    <div class="experience">
-      <div class="item"><h4>Masters of Computer Application (MCA)</h4><p>College of Engineering ,Trivandrum</p><p>2025 -2027</p></div>
-      <div class="item"><h4>Bachelor of Computer Science</h4><p>Kannur University</p><p>2022 - 2025</p></div>
+  <div id="main">
+    <section class="section hero" id="hero">
+      <div class="section-content">
+        <p>WELCOME</p>
+        <h1>I'm Amarjith Anand<br/>Computer Science Graduate</h1>
+        <div class="btn-group">
+          <a href="#about" class="btn" data-section="1">More About Me</a>
+          <a href="#contact" class="btn outline" data-section="4">Get in Touch</a>
+        </div>
       </div>
-  </section>
-
-  <section id="awards">
-    <h2 class="section-title">Skills</h2>
-    <div class="awards">
-      <div class="item"><h4>Programming</h4></div>
-      <div class="item"><h4>Data Science</h4></div>
-      <div class="item"><h4>Mobile App Development</h4></div>
-      <div class="item"><h4>Web Development</h4></div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <h2 class="contact-heading">Get In Touch.</h2>
-    <p class="footer-description">Interested in working together? I'm currently open to new opportunities. Drop a message or download my resume.</p>
-    <div class="footer-links">
-      <a href="#">Instagram</a>
-      <a href="#">GitHub</a>
-      <a href="#">LinkedIn</a>
-      <a href="mailto:example@gmail.com">Gmail</a>
-    </div>
-    <div class="footer-actions">
-      <a href="mailto:example@gmail.com" class="btn">MESSAGE ME</a>
-      <a href="cv.pdf" class="btn outline" download>GET MY CV</a>
-    </div>
-  </footer>
-
+    </section>
+    <section class="section" id="about">
+      <div class="section-content">
+        <h2 class="section-title">About Me</h2>
+        <p>
+          I am a passionate Computer Science graduate with a strong foundation in programming, problem-solving, and user experience design. My academic journey has equipped me with expertise in software development, data structures, algorithms, and full-stack technologies, which I continuously refine through personal projects and real-world applications.<br><br>
+          My final-year project, <em>Migrant Workers Registration and Local Job Management</em>, demonstrates my ability to address real-life challenges with scalable digital solutions. I enjoy creating interfaces that are not only functional but also intuitive and visually appealing. I believe good design is as important as strong logic, and I strive to blend both in every project I work on.
+        </p>
+      </div>
+    </section>
+    <section class="section" id="experience">
+      <div class="section-content">
+        <h2 class="section-title">Education</h2>
+        <div class="item">
+          <h4>Masters of Computer Application (MCA)</h4>
+          <div class="meta">College of Engineering, Trivandrum</div>
+          <div class="meta">2025 – 2027</div>
+        </div>
+        <div class="item">
+          <h4>Bachelor of Computer Science</h4>
+          <div class="meta">Kannur University</div>
+          <div class="meta">2022 – 2025</div>
+        </div>
+      </div>
+      <div class="section-content">
+        <h2 class="section-title">Projects</h2>
+        <div class="item">
+          <h4>Final Year Project: Migrant Workers Registration</h4>
+          <div class="meta">Kannur University | 2025</div>
+          <ul class="responsibilities">
+            <li>Designed and implemented scalable registration modules.</li>
+            <li>Led a team of 3 in agile sprints for rapid prototyping.</li>
+            <li>Integrated data visualization for local job analytics.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="skills">
+      <div class="section-content">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-list">
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">Java</span>
+          <span class="skill-badge">JavaScript</span>
+          <span class="skill-badge">C/C++</span>
+          <span class="skill-badge">SQL</span>
+          <span class="skill-badge">Data Science</span>
+          <span class="skill-badge">Mobile App Development</span>
+          <span class="skill-badge">Web Development</span>
+        </div>
+      </div>
+    <footer class="section" id="contact">
+      <div class="section-content">
+        <h2 class="contact-heading">Get In Touch</h2>
+        <p class="footer-description">
+          Interested in working together? I am currently open to new opportunities. Feel free to drop a message or download my resume.
+        </p>
+        <div class="footer-links">
+          <a href="https://instagram.com/amarjith017" target="_blank">Instagram</a>
+          <a href="https://github.com/amarjithanand" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+          <a href="mailto:amarjithanand17@gmail.com">Gmail</a>
+        </div>
+        <div class="footer-actions">
+          <a href="mailto:amarjithanand17@gmail.com" class="btn">Message Me</a>
+          <a href="cv.pdf" class="btn outline" download>Download CV</a>
+        </div>
+        <div class="footer-copyright">
+          &copy; 2025 Amarjith Anand. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    </section>
+  </div>
   <script>
+    // Burger menu for mobile
     function toggleMenu() {
       const nav = document.getElementById('navLinks');
       nav.classList.toggle('nav-active');
     }
-  </script>
 
+    const main = document.getElementById('main');
+    const sections = Array.from(document.querySelectorAll('.section'));
+    let isScrolling = false;
+
+    function scrollToSection(idx) {
+      if (idx < 0 || idx >= sections.length) return;
+      isScrolling = true;
+      sections[idx].scrollIntoView({behavior: 'smooth'});
+      setTimeout(() => { isScrolling = false; }, 800);
+    }
+
+    document.querySelectorAll('nav a, .btn-group a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const idx = this.getAttribute('data-section');
+        if (idx !== null) {
+          e.preventDefault();
+          scrollToSection(parseInt(idx));
+          if(window.innerWidth <= 768) toggleMenu();
+        }
+      });
+    });
+
+    function updateSectionVisibility() {
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top >= -100 && rect.top <= window.innerHeight / 1.5) {
+          section.classList.add('visible');
+        } else {
+          section.classList.remove('visible');
+        }
+      });
+    }
+
+    main.addEventListener('scroll', function() {
+      let minDiff = Infinity;
+      let idx = 0;
+      sections.forEach((sec, i) => {
+        const diff = Math.abs(sec.getBoundingClientRect().top - 80);
+        if (diff < minDiff) {
+          minDiff = diff;
+          idx = i;
+        }
+      });
+      updateSectionVisibility();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (isScrolling) return;
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        scrollToSection(++currentSection);
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        scrollToSection(--currentSection);
+      }
+    });
+
+    let currentSection = 0;
+
+    window.onload = () => {
+      scrollToSection(0);
+      updateSectionVisibility();
+    };
+  </script>
 </body>
 </html>
