@@ -29,69 +29,6 @@
       overflow: hidden;
       font-size: 18px;
     }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #181823e6;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2rem;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      backdrop-filter: blur(6px);
-    }
-    .logo {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--accent);
-    }
-    nav {
-      display: flex;
-    }
-    nav a {
-      margin-left: 2rem;
-      text-decoration: none;
-      font-weight: 600;
-      color: var(--text-light);
-      font-size: 1.08rem;
-      transition: color 0.2s;
-      position: relative;
-    }
-    nav a::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.2s;
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-    }
-    nav a:hover, nav a:focus {
-      color: var(--accent);
-    }
-    nav a:hover::after, nav a:focus::after {
-      width: 100%;
-    }
-    .burger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .burger span {
-      height: 3px;
-      width: 25px;
-      background: var(--text-light);
-      margin: 4px 0;
-      border-radius: 2px;
-      transition: 0.3s;
-    }
-    .nav-links { display: flex; }
     
     /* Section transition effect */
     .section {
