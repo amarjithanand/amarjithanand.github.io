@@ -333,7 +333,7 @@
 
       <div class="section-content">
         <h2 class="section-title">Projects</h2>
-        <div class="item">
+        <div class="item" "migrantWorker">
           <h4>Final Year Project: Migrant Workers Registration</h4>
           <div class="meta">Kannur University | 2025</div>
         </div>
@@ -358,7 +358,7 @@
 
       <div class="section-content">
         <h2 class="section-title">Certifications</h2>
-        <div class="item">
+        <div class="item" id="dataScienceIBM">
           <h4>IBM Data Science</h4>
           <div class="meta">Coursera | September 2025</div>
         </div>
@@ -458,6 +458,13 @@
         status.textContent = "Failed to send message.";
       }
     });
+
+     document.getElementById("migrantWorker").addEventListener("click", function(){
+      window.location.href="https://github.com/projectteam2k24/migrantworker"
+    })
+    document.getElementById("dataScienceIBM").addEventListener("click", function(){
+      window.location.href="https://www.coursera.org/account/accomplishments/specialization/1LZG41YGRSZG"
+    })
   </script>
 </body>
 </html>
