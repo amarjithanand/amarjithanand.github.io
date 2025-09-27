@@ -459,12 +459,18 @@
       }
     });
 
-     document.getElementById("migrantWorker").addEventListener("touchstart", function(){
-      window.location.href="https://github.com/projectteam2k24/migrantworker"
-    })
-    document.getElementById("dataScienceIBM").addEventListener("touchstart", function(){
-      window.location.href="https://www.coursera.org/account/accomplishments/specialization/1LZG41YGRSZG"
-    })
+     function goToGitHub() {
+    window.location.href = "https://github.com/projectteam2k24/migrantworker";
+}
+
+function goToCoursera() {
+    window.location.href = "https://www.coursera.org/account/accomplishments/specialization/1LZG41YGRSZG";
+}
+
+["click", "touchstart"].forEach(event => {
+    document.getElementById("migrantWorker").addEventListener(event, goToGitHub);
+    document.getElementById("dataScienceIBM").addEventListener(event, goToCoursera);
+});
   </script>
 </body>
 </html>
