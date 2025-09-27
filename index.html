@@ -1,204 +1,213 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Amarjith Anand | Portfolio</title>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
+    /* ================= Root Variables ================= */
     :root {
       --bg-dark: #101014;
+      --bg-card: rgba(30, 30, 40, 0.7);
+      --bg-footer: #161622;
       --text-light: #f5f6fa;
+      --text-muted: #a0a0a0;
       --accent: #e94d1c;
-      --muted: #a0a0a0;
+
       --font-serif: 'Playfair Display', serif;
       --font-sans: 'Inter', sans-serif;
     }
-    html {
-      scroll-behavior: smooth;
+
+    /* ================= Base Styles ================= */
+    html, body {
+      margin: 0;
+      padding: 0;
       height: 100%;
-      overflow: hidden;
-    }
-    body {
       font-family: var(--font-sans);
+      font-size: 18px;
       background: var(--bg-dark);
       color: var(--text-light);
-      margin: 0;
-      height: 100%;
+      scroll-behavior: smooth;
       overflow: hidden;
-      font-size: 18px;
-    }
-    
-    /* Section transition effect */
-    .section {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      height: 100vh;
-      width: 100vw;
-      scroll-snap-align: start;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-top: 10px;
-      box-sizing: border-box;
-    }
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
+    #main {
+      height: 100vh;
+      width: 100vw;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+    #main::-webkit-scrollbar { width: 0; background: transparent; }
+    #main { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* ================= Sections ================= */
+ .section {
+  height: 100vh;
+  width: 95vw;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 1;
+}
+
+
+    /* ================= Hero Section ================= */
     .hero {
-      background: linear-gradient(rgba(16,16,20,0.8), rgba(16,16,20,0.9)),
-        url('https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/images.png') center/cover no-repeat;
-      color: white;
       text-align: center;
+      background: linear-gradient(rgba(16,16,20,0.8), rgba(16,16,20,0.9)),
+                  url('') center/cover no-repeat;
+      color: #fff;
     }
     .hero p {
       color: var(--accent);
       font-size: 1.2rem;
       letter-spacing: 2px;
-      margin-bottom: 0.7rem;
       font-weight: 600;
+      margin-bottom: 0.7rem;
     }
     .hero h1 {
       font-size: 2.7rem;
       font-family: var(--font-serif);
       font-weight: 700;
+      line-height: 1.2;
       margin-bottom: 1.2rem;
-      line-height: 1.15;
     }
+
+    /* Buttons */
     .btn-group {
       margin-top: 2.2rem;
       display: flex;
-      flex-direction: row;
       gap: 1.2rem;
       justify-content: center;
     }
     .btn {
-      border: 2px solid var(--accent);
+      display: inline-block;
       padding: 13px 32px;
       font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 2px solid var(--accent);
       background: transparent;
       color: var(--text-light);
-      cursor: pointer;
-      transition: 0.2s;
       text-decoration: none;
-      display: inline-block;
-      border-radius: 6px;
-      font-weight: 600;
+      cursor: pointer;
+      transition: 0.25s;
     }
-    .btn:hover, .btn:focus {
+    .btn:hover {
       background: var(--accent);
       color: #fff;
-      border-color: var(--accent);
     }
     .btn.outline {
-      background: transparent;
       border-color: var(--text-light);
-      color: var(--text-light);
     }
-    .btn.outline:hover, .btn.outline:focus {
+    .btn.outline:hover {
       background: var(--text-light);
       color: var(--accent);
-      border-color: var(--text-light);
     }
+
+    /* ================= Section Headings ================= */
     h2.section-title {
       font-size: 2.5rem;
       font-family: var(--font-serif);
+      font-weight: 700;
       margin-bottom: 1.2rem;
       color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.5px;
     }
+
     .section-content {
       max-width: 700px;
-      width: 100%;
       margin: 0 auto;
-      padding: 0 1rem;
-    }
-    #about p {
-      color: #e0e0e0;
-      font-size: 1.125rem;
-      text-align: justify;
-      line-height: 1.7;
-      margin-bottom: 2.2rem;
-      background: rgba(30,30,40,0.7);
-      border-radius: 12px;
-      padding: 1.2rem 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-      width: 90%;
-      max-width: 600px;
-    }
-    #experience .item, #education .item {
-      margin-bottom: 2.2rem;
-      background: rgba(30,30,40,0.7);
-      border-radius: 12px;
-      padding: 1.2rem 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
       width: 100%;
-      max-width: 600px;
+      padding: 0 1rem;
+      text-align: center;
     }
-    #experience .item h4, #education .item h4 {
+
+    /* ================= About Section ================= */
+    #about p {
+      background: var(--bg-card);
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      font-size: 1.125rem;
+      line-height: 1.7;
+      text-align: justify;
+      margin: 0 auto 2.2rem;
+      max-width: 600px;
+      color: #e0e0e0;
+    }
+
+    /* ================= Education / Projects ================= */
+    .item {
+      background: var(--bg-card);
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      margin: 0 auto 2.2rem;
+      max-width: 600px;
+      text-align: left;
+    }
+    .item h4 {
       font-size: 1.18rem;
       font-weight: 700;
-      margin-bottom: 0.2rem;
-      color: var(--text-light);
+      margin-bottom: 0.3rem;
     }
-    #experience .item .meta, #education .item .meta {
-      color: var(--muted);
+    .meta {
       font-size: 1.02rem;
-      margin-bottom: 0.7rem;
       font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
     }
     .responsibilities {
       margin: 0.7em 0 0 1.2em;
-      padding: 0;
       font-size: 1rem;
-      color: #b0b0b0;
-      list-style: disc inside;
-    }
-    .responsibilities li {
-      margin-bottom: 0.4em;
       line-height: 1.6;
+      color: #b0b0b0;
+      list-style: disc;
     }
+
+    /* ================= Skills ================= */
     .skills-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.2rem 2.5rem;
-      margin-top: 1.2rem;
+      gap: 1rem 2rem;
       justify-content: center;
-      max-width: 700px;
+      margin-top: 1.2rem;
     }
     .skill-badge {
       background: #232336;
-      color: var(--text-light);
+      border: 1px solid #232336;
       padding: 0.55em 1.2em;
       border-radius: 20px;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
-      border: 1px solid #232336;
-      transition: background 0.15s;
+      transition: background 0.2s;
     }
     .skill-badge:hover {
       background: var(--accent);
       color: #fff;
     }
+
+    /* ================= Footer ================= */
     footer.section {
-      background: #161622;
-      color: white;
+      background: var(--bg-footer);
       text-align: center;
+      padding-top: 40px;
       justify-content: flex-start;
     }
     .contact-heading {
       font-family: var(--font-serif);
       font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
       font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1rem;
     }
     .footer-description {
       max-width: 600px;
@@ -206,79 +215,84 @@
       color: #aaa;
       font-size: 1.05rem;
     }
-    .footer-links {
-      margin-bottom: 1.3rem;
-    }
     .footer-links a {
       margin: 0 12px;
-      color: #f5f6fa;
-      text-decoration: none;
+      color: var(--text-light);
       font-size: 1.08rem;
+      text-decoration: none;
       transition: color 0.2s;
     }
-    .footer-links a:hover, .footer-links a:focus {
+    .footer-links a:hover {
       color: var(--accent);
     }
-    .footer-actions .btn {
-      margin: 10px 8px;
-    }
     .footer-copyright {
-      margin-top: 2.5rem;
-      color: #444;
-      font-size: 0.96rem;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: #666;
     }
-    #main {
-      height: 100vh;
-      width: 100vw;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-    }
-    #main::-webkit-scrollbar { width: 0; background: transparent; }
-    #main { -ms-overflow-style: none; scrollbar-width: none; }
 
+    /* ================= Contact Form ================= */
+    #contactForm {
+      background: #111;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(255,180,71,0.15);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    #contactForm input,
+    #contactForm textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 12px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 1em;
+      box-shadow: 0 0 8px rgba(255,180,71,0.3) inset;
+    }
+    #contactForm textarea { resize: none; height: 120px; }
+    #contactForm button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 35px;
+      font-weight: 600;
+      font-size: 1.05em;
+      background: #ffb347;
+      color: #111;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #contactForm button:hover {
+      background: #ffa31a;
+    }
+    #contactForm .status {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1em;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    /* ================= Responsive ================= */
     @media(max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        background: #181823;
-        width: 100%;
-        flex-direction: column;
-        padding: 1.2rem 2rem;
-      }
-      .nav-links a {
-        margin: 1rem 0;
-        font-size: 1.1rem;
-      }
-      .burger {
-        display: flex;
-      }
-      .nav-active {
-        display: flex;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .skills-list {
-        flex-direction: column;
-        gap: 0.7rem 0;
-      }
-      .section-content {
-        padding: 0 0.3rem;
-      }
-      #experience .item, #education .item {
-        padding: 1rem 0.7rem;
-      }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .skills-list { flex-direction: column; gap: 0.7rem; }
+      .item { padding: 1rem; }
     }
   </style>
 </head>
+
 <body>
   <div id="main">
+    <!-- Hero -->
     <section class="section hero" id="hero">
       <div class="section-content">
         <p>WELCOME</p>
@@ -289,6 +303,8 @@
         </div>
       </div>
     </section>
+
+    <!-- About -->
     <section class="section" id="about">
       <div class="section-content">
         <h2 class="section-title">About Me</h2>
@@ -298,6 +314,8 @@
         </p>
       </div>
     </section>
+
+    <!-- Education & Projects -->
     <section class="section" id="experience">
       <div class="section-content">
         <h2 class="section-title">Education</h2>
@@ -305,26 +323,24 @@
           <h4>Masters of Computer Application (MCA)</h4>
           <div class="meta">College of Engineering, Trivandrum</div>
           <div class="meta">2025 – 2027</div>
-      </div>
+        </div>
         <div class="item">
           <h4>Bachelor of Computer Science</h4>
           <div class="meta">Kannur University</div>
           <div class="meta">2022 – 2025</div>
         </div>
       </div>
+
       <div class="section-content">
         <h2 class="section-title">Projects</h2>
         <div class="item">
           <h4>Final Year Project: Migrant Workers Registration</h4>
           <div class="meta">Kannur University | 2025</div>
-          <ul class="responsibilities">
-            <li>Designed and implemented scalable registration modules.</li>
-            <li>Led a team of 3 in agile sprints for rapid prototyping.</li>
-            <li>Integrated data visualization for local job analytics.</li>
-          </ul>
         </div>
       </div>
     </section>
+
+    <!-- Skills & Certifications -->
     <section class="section" id="skills">
       <div class="section-content">
         <h2 class="section-title">Skills</h2>
@@ -339,39 +355,45 @@
           <span class="skill-badge">Web Development</span>
         </div>
       </div>
-    <footer class="section" id="contact">
+
       <div class="section-content">
-        <h2 class="contact-heading">Get In Touch</h2>
-        <p class="footer-description">
-          Interested in working together? I am currently open to new opportunities. Feel free to drop a message or download my resume.
-        </p>
-        <div class="footer-links">
-          <a href="https://instagram.com/amarjith017" target="_blank">Instagram</a>
-          <a href="https://github.com/amarjithanand" target="_blank">GitHub</a>
-          <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
-          <a href="mailto:amarjithanand17@gmail.com">Gmail</a>
-        </div>
-        <div class="footer-actions">
-          <a href="mailto:amarjithanand17@gmail.com" class="btn">Message Me</a>
-          <a href="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/cv.png" class="btn outline" download>Download CV</a>
-        </div>
-        <div class="footer-copyright">
-          &copy; 2025 Amarjith Anand. All rights reserved.
+        <h2 class="section-title">Certifications</h2>
+        <div class="item">
+          <h4>IBM Data Science</h4>
+          <div class="meta">Coursera | September 2025</div>
         </div>
       </div>
-    </footer>
     </section>
-  </div>
-  <script>
-    // Burger menu for mobile
-    function toggleMenu() {
-      const nav = document.getElementById('navLinks');
-      nav.classList.toggle('nav-active');
-    }
 
+    <!-- Contact -->
+    <footer class="section" id="contact">
+      <div class="section-content">
+        <h2 class="contact-heading">Contact Me</h2>
+        <form id="contactForm" action="https://formspree.io/f/xanpqjjz" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+          <p class="status" id="status"></p>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/amarjith-anand-49577a320" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="28"></a>
+            <a href="https://instagram.com/amarjith017" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="28"></a>
+            <a href="mailto:amarjithanand17@gmail.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="28"></a>
+          </div>
+        </form>
+        <p class="footer-copyright">
+          © 2025 Amarjith Anand. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ================= Scripts ================= -->
+  <script>
     const main = document.getElementById('main');
     const sections = Array.from(document.querySelectorAll('.section'));
     let isScrolling = false;
+    let currentSection = 0;
 
     function scrollToSection(idx) {
       if (idx < 0 || idx >= sections.length) return;
@@ -380,19 +402,18 @@
       setTimeout(() => { isScrolling = false; }, 800);
     }
 
-    document.querySelectorAll('nav a, .btn-group a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const idx = this.getAttribute('data-section');
+    document.querySelectorAll('.btn-group a').forEach(link => {
+      link.addEventListener('click', e => {
+        const idx = link.getAttribute('data-section');
         if (idx !== null) {
           e.preventDefault();
           scrollToSection(parseInt(idx));
-          if(window.innerWidth <= 768) toggleMenu();
         }
       });
     });
 
     function updateSectionVisibility() {
-      sections.forEach((section, index) => {
+      sections.forEach(section => {
         const rect = section.getBoundingClientRect();
         if (rect.top >= -100 && rect.top <= window.innerHeight / 1.5) {
           section.classList.add('visible');
@@ -402,20 +423,9 @@
       });
     }
 
-    main.addEventListener('scroll', function() {
-      let minDiff = Infinity;
-      let idx = 0;
-      sections.forEach((sec, i) => {
-        const diff = Math.abs(sec.getBoundingClientRect().top - 80);
-        if (diff < minDiff) {
-          minDiff = diff;
-          idx = i;
-        }
-      });
-      updateSectionVisibility();
-    });
+    main.addEventListener('scroll', updateSectionVisibility);
 
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', e => {
       if (isScrolling) return;
       if (e.key === 'ArrowDown' || e.key === 'PageDown') {
         scrollToSection(++currentSection);
@@ -424,12 +434,30 @@
       }
     });
 
-    let currentSection = 0;
-
     window.onload = () => {
       scrollToSection(0);
       updateSectionVisibility();
     };
+
+    document.getElementById('contactForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+      const status = document.getElementById('status');
+      status.textContent = "Sending...";
+      const data = new FormData(this);
+      const response = await fetch(this.action, {
+        method: this.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if(response.ok){
+        status.style.color = "#4caf50";
+        status.textContent = "Message Sent Successfully!";
+        this.reset();
+      } else {
+        status.style.color = "red";
+        status.textContent = "Failed to send message.";
+      }
+    });
   </script>
 </body>
 </html>
