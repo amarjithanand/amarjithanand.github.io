@@ -56,7 +56,7 @@
             transform: translateY(0);
         }
         .section:last-of-type { border-bottom: none; }
-        
+
         /* Upgraded Card Styles with Tilt Effect */
         .card {
             background-color: var(--card-bg);
@@ -70,7 +70,7 @@
             transform: translateY(-8px) perspective(1000px);
             box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
         }
-        
+
         /* Animated Gradient Text */
         .animated-gradient {
             background: linear-gradient(90deg, #38bdf8, #a78bfa, #38bdf8);
@@ -82,7 +82,7 @@
         @keyframes gradient-flow {
             to { background-position: 200% center; }
         }
-        
+
         /* Animated scroll progress bar */
         .scroll-progress-bar {
             position: fixed;
@@ -181,7 +181,7 @@
         .fab-main:hover {
             background-color: var(--accent-hover);
         }
-        
+
         .fab-option {
             background-color: #1f2937;
             color: white;
@@ -196,7 +196,7 @@
         .fab-container.active .fab-main {
             transform: rotate(135deg);
         }
-        
+
         /* Circular alignment with increased gap*/
         .fab-container.active .fab-option { transform: scale(1); }
         .fab-container.active .fab-option:nth-child(1) { transform: translate(-85px, 0); transition-delay: 0.05s; } /* Left */
@@ -299,7 +299,7 @@
         </section>
 <section id="projects" class="section">
   <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">
-    Projects & Experience
+    Projects
   </h2>
 
   <div class="space-y-10 stagger-in max-w-4xl mx-auto">
@@ -341,7 +341,7 @@
           Dementia Virtual Memory Assistant (DVMA)
         </h3>
         <p class="text-gray-400 text-sm mb-4">
-          Mobile Application | Apr 2024 - Oct 2024
+          Mobile Application | Aug 2025 - Oct 2025
         </p>
         <p class="text-gray-300 mb-4">
           A compassionate mobile application designed to support dementia patients in managing their daily lives, preserving memories, and staying connected with caregivers and family. The app provides role-based access for Users, Caretakers, and Admins, featuring real-time notifications, AI-powered chat assistance, and face recognition capabilities to enhance the quality of life for dementia patients.
@@ -380,10 +380,52 @@
 
   </div>
 </section>
+<!--Experiemce-->
+
+<section id="projects" class="section">
+  <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">
+    Experience
+  </h2>
+
+  <!-- 15-Days Internship @ Ybi Foundation -->
+<div class="card p-8 rounded-xl" data-tilt>
+  <div style="transform: translateZ(20px);">
+    <h3 class="text-xl font-semibold text-blue-400">
+      Intern at Ybi Foundation
+    </h3>
+    <p class="text-gray-400 text-sm mb-4">
+      Artificial Intelligence & GenAI Internship | Oct 2025 (15 days)
+    </p>
+    <p class="text-gray-300 mb-4">
+      A beginner-friendly internship program focused on gaining practical experience in Artificial Intelligence and Generative AI through live sessions, mentor guidance, and hands-on projects under the mentorship of Ybi Foundation experts.
+    </p>
+    <ul class="list-disc list-inside space-y-2 text-gray-300 stagger-in">
+      <li>
+        Learned and applied various <span class="font-semibold text-cyan-400">programming languages and AI technologies</span> to build real-world projects.
+      </li>
+      <li>
+        Worked collaboratively on <span class="font-semibold text-cyan-400">assigned AI/ML projects</span> under industry mentorship.
+      </li>
+      <li>
+        Participated in <span class="font-semibold text-cyan-400">project reviews and feedback sessions</span> to enhance problem-solving and coding skills.
+      </li>
+      <li>
+        Contributed to <span class="font-semibold text-cyan-400">design and implementation</span> of AI-based solutions with a focus on innovation and learning.
+      </li>
+      <li>
+        Conducted <span class="font-semibold text-cyan-400">research on latest AI trends</span> and explored the applications of Generative AI in emerging domains.
+      </li>
+      <li>
+        Collaborated effectively with team members, mentors, and other participants to foster <span class="font-semibold text-cyan-400">teamwork and professional growth</span>.
+      </li>
+    </ul>
+  </div>
+</div>
+</section>
 
         <!-- Education Section -->
         <section id="education" class="section">
-            <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">Education & Certifications</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">Education</h2>
             <div class="space-y-8 stagger-in max-w-4xl mx-auto">
                 <div class="card p-6 rounded-xl" data-tilt>
                     <div style="transform: translateZ(20px);">
@@ -399,6 +441,13 @@
                         <p class="text-gray-500 text-sm">Graduated May 2025 | CGPA: 8.752</p>
                     </div>
                 </div>
+            </div>
+        </section>
+        
+        <!--Certification Section-->
+         <section id="education" class="section">
+            <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">Certifications</h2>
+            <div class="space-y-8 stagger-in max-w-4xl mx-auto">
                  <div class="card p-6 rounded-xl" data-tilt>
                     <div style="transform: translateZ(20px);">
                         <h3 class="text-xl font-semibold text-blue-400">IBM Data Science Professional Certificate</h3>
@@ -445,8 +494,10 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.282.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.843-.038 1.096-.047 3.232-.047h.001zm4.908 1.646c-.458 0-.83.372-.83.83s.372.83.83.83.83-.372.83-.83-.372-.83-.83-.83zm-6.407 1.558c-1.29 0-2.333.93-2.333 2.175 0 1.245 1.043 2.175 2.333 2.175s2.333-.93 2.333-2.175c0-1.245-1.043-2.175-2.333-2.175zm0 3.493c-.694 0-1.255-.56-1.255-1.255s.56-1.255 1.255-1.255c.694 0 1.255.56 1.255 1.255s-.56 1.255-1.255 1.255z"/></svg>
         </a>
         <a href="https://github.com/amarjithanand" target="_blank" class="fab-option" aria-label="Github Profile">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
-        </a>
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.42 7.86 10.95.58.11.79-.25.79-.56v-2.17c-3.2.69-3.88-1.39-3.88-1.39-.53-1.34-1.29-1.7-1.29-1.7-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.21 1.79 1.21 1.04 1.79 2.72 1.27 3.38.97.1-.76.41-1.27.75-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.53.11-3.19 0 0 .98-.32 3.21 1.17a11.15 11.15 0 0 1 5.85 0c2.23-1.49 3.21-1.17 3.21-1.17.63 1.66.23 2.89.11 3.19.75.8 1.2 1.82 1.2 3.07 0 4.4-2.68 5.35-5.24 5.64.42.36.8 1.09.8 2.21v3.28c0 .31.21.68.8.56A10.996 10.996 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/>
+  </svg>
+</a>
         <a href="https://www.linkedin.com/in/amarjith-anand-49577a320/" target="_blank" class="fab-option" aria-label="LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
         </a>
@@ -475,13 +526,13 @@
             const progressBar = document.getElementById('scroll-progress');
             const fabContainer = document.getElementById('fab-container');
             const fabMain = document.getElementById('fab-main');
-            
+
             // --- Expanding FAB Logic ---
             fabMain.addEventListener('click', (e) => {
                 e.stopPropagation();
                 fabContainer.classList.toggle('active');
             });
-            
+
             document.addEventListener('click', (e) => {
                 if (fabContainer.classList.contains('active')) {
                     fabContainer.classList.remove('active');
@@ -495,7 +546,7 @@
                 progressBar.style.width = `${scrollPercent}%`;
             };
             window.addEventListener('scroll', updateProgressBar);
-            
+
             // --- Staggered Animation Logic ---
             const staggerObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -512,7 +563,7 @@
             }, { threshold: 0.2 });
 
             document.querySelectorAll('.stagger-in').forEach(el => staggerObserver.observe(el));
-            
+
             // --- Section Fade-in Animation ---
             const sectionObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
