@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="etx5gNRffSuP4I2NNBBmJdnlSKaRvoYYwSVAmADMXoc" />
-  <meta name="description" content="Personal Portfolio of Amarjith Anand | MCA Student at College of Engineering, Trivandrum" />
+    <meta name="google-site-verification" content="etx5gNRffSuP4I2NNBBmJdnlSKaRvoYYwSVAmADMXoc" />
+    <meta name="description" content="Personal Portfolio of Amarjith Anand | MCA Student at College of Engineering, Trivandrum" />
     <meta property="og:image" content="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/preview.png" />
-<meta name="google-site-verification" content="etx5gNRffSuP4I2NNBBmJdnlSKaRvoYYwSVAmADMXoc" />
-<meta name="google-site-verification" content="etx5gNRffSuP4I2NNBBmJdnlSKaRvoYYwSVAmADMXoc" /><meta name="google-site-verification" content="etx5gNRffSuP4I2NNBBmJdnlSKaRvoYYwSVAmADMXoc" />
-  <meta name="author" content="Amarjith Anand" />
+    <meta name="author" content="Amarjith Anand" />
     <title>Amarjith Anand | MCA Student | Aspiring Data Scientist</title>
-<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/logo.png">
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* --- Dark Theme (Default) --- */
         :root {
             --background-color: #050816;
             --primary-text: #e5e7eb;
@@ -25,6 +24,34 @@
             --card-bg: rgba(15, 23, 42, 0.75);
             --card-border: rgba(56, 189, 248, 0.1);
             --input-bg: rgba(22, 30, 50, 0.5);
+            --fab-bg: #1f2937;
+            --fab-hover: #374151;
+            --fab-text: white;
+            --scrollbar-thumb: #27272a;
+            --scrollbar-thumb-hover: #3f3f46;
+            --navbar-bg: rgba(5, 8, 22, 0.7);
+        }
+
+        /* --- Light Theme (New B&W/Grey Theme) --- */
+        html.light {
+            --background-color: #ffffff; /* White background */
+            --primary-text: #111827;     /* Near-black text */
+            --secondary-text: #6b7280;   /* Medium gray text */
+            --accent-color: #2563eb;     /* Keeping accent blue */
+            --accent-hover: #1d4ed8;
+            --card-bg: rgba(255, 255, 255, 0.75); /* White card */
+            --card-border: #e5e7eb; /* Light gray border */
+            --input-bg: #f9fafb; /* Off-white input */
+            --fab-bg: #f3f4f6; /* Lighter fab */
+            --fab-hover: #e5e7eb; /* Light gray fab hover */
+            --fab-text: #111827; /* Near-black fab text */
+            --scrollbar-thumb: #d1d5db;
+            --scrollbar-thumb-hover: #b0b8c4;
+            --navbar-bg: rgba(255, 255, 255, 0.7);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -33,7 +60,24 @@
             color: var(--primary-text);
             overflow-x: hidden;
             cursor: default;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        /* --- Grainy Background Overlay --- */
+        /* This pseudo-element adds a subtle noise texture over the entire page */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.035"/></svg>');
+            z-index: 1000; /* Places it on top of all content */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+        /* --- End Grainy Background --- */
+
         #particles-js {
             position: fixed;
             width: 100%;
@@ -49,7 +93,7 @@
             border-bottom: 1px solid var(--card-border);
             opacity: 0;
             transform: translateY(50px);
-            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease;
         }
         .section.is-visible {
             opacity: 1;
@@ -57,21 +101,23 @@
         }
         .section:last-of-type { border-bottom: none; }
 
-        /* Upgraded Card Styles with Tilt Effect */
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             backdrop-filter: blur(16px) saturate(180%);
             -webkit-backdrop-filter: blur(16px) saturate(180%);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease, border-color 0.3s ease;
             transform-style: preserve-3d;
         }
         .card:hover {
             transform: translateY(-8px) perspective(1000px);
             box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
         }
+        html.light .card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
 
-        /* Animated Gradient Text */
+
         .animated-gradient {
             background: linear-gradient(90deg, #38bdf8, #a78bfa, #38bdf8);
             background-size: 200% auto;
@@ -83,7 +129,6 @@
             to { background-position: 200% center; }
         }
 
-        /* Animated scroll progress bar */
         .scroll-progress-bar {
             position: fixed;
             top: 0;
@@ -102,18 +147,16 @@
 
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--background-color); }
-        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+        ::-webkit-scrollbar-track { background: var(--background-color); transition: background-color 0.3s ease; }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; transition: background-color 0.3s ease;}
+        ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
 
-        /* Staggered animation for list items */
         .stagger-in > * {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        /* Hero Image Style */
         .hero-image-container {
             padding: 8px;
             background: linear-gradient(45deg, rgba(56, 189, 248, 0.5), rgba(167, 139, 250, 0.5));
@@ -130,6 +173,7 @@
             background-color: var(--background-color);
             border-radius: 50%;
             padding: 8px;
+            transition: background-color 0.3s ease;
         }
 
         /* Form Styling */
@@ -140,12 +184,15 @@
             color: var(--primary-text);
             padding: 0.75rem 1rem;
             border-radius: 0.5rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s ease, color 0.3s ease;
         }
         .form-input:focus {
             outline: none;
             border-color: var(--accent-color);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
+        }
+        .form-input::placeholder {
+            color: var(--secondary-text);
         }
 
         /* Expanding FAB styles */
@@ -171,6 +218,9 @@
             bottom: 0;
             right: 0;
         }
+        html.light .fab-main, html.light .fab-option {
+             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
 
         .fab-main {
             background-color: var(--accent-color);
@@ -183,21 +233,20 @@
         }
 
         .fab-option {
-            background-color: #1f2937;
-            color: white;
+            background-color: var(--fab-bg);
+            color: var(--fab-text);
             transform: scale(0);
             z-index: 51;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, color 0.3s ease;
         }
         .fab-option:hover {
-            background-color: #374151;
+            background-color: var(--fab-hover);
         }
 
         .fab-container.active .fab-main {
             transform: rotate(135deg);
         }
 
-        /* Circular alignment with increased gap*/
         .fab-container.active .fab-option { transform: scale(1); }
         .fab-container.active .fab-option:nth-child(1) { transform: translate(-85px, 0); transition-delay: 0.05s; } /* Left */
         .fab-container.active .fab-option:nth-child(2) { transform: translate(-74px, -43px); transition-delay: 0.1s; } /* Top-Left */
@@ -221,7 +270,87 @@
             transform: scale(1) rotate(0);
             opacity: 1;
         }
+
+        /* --- Navbar Styles --- */
+        #navbar {
+            background-color: var(--navbar-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        main {
+            padding-top: 5rem; /* Offset for fixed navbar */
+        }
+        .nav-link {
+            color: var(--secondary-text);
+        }
+        .nav-link:hover {
+            color: var(--primary-text);
+        }
+        html.light .nav-link {
+            color: var(--secondary-text);
+        }
+        html.light .nav-link:hover {
+            color: var(--primary-text);
+        }
+
+
+        /* Mobile Nav Active State */
+        body.mobile-nav-active {
+            overflow: hidden; 
+        }
+        #mobile-nav-menu {
+            background-color: var(--background-color);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        body.mobile-nav-active #mobile-nav-menu {
+            transform: translateY(0);
+        }
+        body.mobile-nav-active #menu-icon {
+            display: none;
+        }
+        body.mobile-nav-active #close-icon {
+            display: block;
+        }
+
+        /* --- Certificate Modal Styles --- */
+        #modal-backdrop {
+            transition: opacity 0.3s ease-in-out;
+        }
+        #modal-image {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* --- Theme Toggle Icon Visibility --- */
+        /* Default (Dark Mode) - Sun icon should be visible */
+        html:not(.light) #theme-icon-sun {
+            display: block;
+        }
+        html:not(.light) #theme-icon-moon {
+            display: none;
+        }
+
+        /* Light Mode - Moon icon should be visible */
+        html.light #theme-icon-sun {
+            display: none;
+        }
+        html.light #theme-icon-moon {
+            display: block;
+        }
+
     </style>
+
+    <!-- Theme initialization script (prevents FOUC) -->
+    <script>
+        (function() {
+            if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                document.documentElement.classList.add('light');
+            } else {
+                document.documentElement.classList.remove('light');
+            }
+        })();
+    </script>
 </head>
 <body class="antialiased">
 
@@ -230,19 +359,78 @@
         <div class="scroll-progress-bar-inner" id="scroll-progress"></div>
     </div>
 
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <nav class="container mx-auto px-4 md:px-8 max-w-5xl flex justify-between items-center py-4">
+            <!-- Logo/Name -->
+            <a href="#home" class="text-xl font-bold animated-gradient">
+                Amarjith Anand
+            </a>
+            
+            <!-- Right Side Wrapper -->
+            <div class="flex items-center gap-2 md:gap-4">
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#home" class="nav-link transition-colors">Home</a>
+                    <a href="#about" class="nav-link transition-colors">About</a>
+                    <a href="#skills" class="nav-link transition-colors">Skills</a>
+                    <a href="#projects" class="nav-link transition-colors">Projects</a>
+                    <a href="#experience" class="nav-link transition-colors">Experience</a>
+                    <a href="#education" class="nav-link transition-colors">Education</a>
+                    <a href="#certifications" class="nav-link transition-colors">Certs</a>
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300">
+                        Contact
+                    </a>
+                </div>
+
+                <!-- Theme Switch Button -->
+                <button id="theme-toggle" type="button" class="nav-link p-2 rounded-lg">
+                    <svg id="theme-icon-sun" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-1.636 4.95l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 111.414-1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zm1.636 4.95l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zm-1.414-10.607a1 1 0 000 1.414l.707.707a1 1 0 101.414-1.414l-.707-.707a1 1 0 00-1.414 0z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    <svg id="theme-icon-moon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                </button>
+
+                <!-- Mobile Nav Button -->
+                <button id="mobile-nav-toggle" class="md:hidden nav-link z-[101]">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16" class="hidden">
+                        <path d="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Nav Menu -->
+    <div id="mobile-nav-menu" class="fixed inset-0 z-[49] -translate-y-full transition-transform duration-300 md:hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl pt-16">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#certifications" class="nav-link">Certs</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </div>
+
+
     <main class="container mx-auto px-4 md:px-8 max-w-5xl">
 
         <!-- Home Section -->
         <section id="home" class="section flex flex-col-reverse md:flex-row items-center justify-center min-h-screen gap-12">
             <div class="md:w-1/2 text-center md:text-left">
-                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-4">Amarjith Anand</h1>
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-4" style="color: var(--primary-text);">Amarjith Anand</h1>
                 <p class="text-xl md:text-2xl animated-gradient font-semibold">MCA '27 - CET | Aspiring Data Scientist</p>
-                <p class="mt-6 max-w-xl mx-auto md:mx-0 text-lg text-gray-400">
+                <p class="mt-6 max-w-xl mx-auto md:mx-0 text-lg" style="color: var(--secondary-text);">
                     Leveraging a foundation in computer science to build intelligent, data-driven solutions and uncover actionable insights.
                 </p>
                 <div class="mt-10 flex justify-center md:justify-start gap-4">
                      <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50">Get in Touch</a>
-                     <a href="https://www.linkedin.com/in/amarjith-anand-49577a320/" target="_blank" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-gray-500/50">View LinkedIn</a>
+                     <a href="https://www.linkedin.com/in/amarjith-anand-49577a320/" target="_blank" class="font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                        style="background-color: var(--fab-bg); color: var(--fab-text); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">View LinkedIn</a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
@@ -258,7 +446,7 @@
         <section id="about" class="section">
             <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">About Me</h2>
             <div class="card p-8 rounded-xl max-w-4xl mx-auto" data-tilt>
-                <p class="text-lg leading-relaxed text-gray-300" style="transform: translateZ(20px);">
+                <p class="text-lg leading-relaxed" style="color: var(--secondary-text); transform: translateZ(20px);">
                     A dedicated Computer Science graduate with proven skills in software development and a burgeoning passion for data science. I am driven by a curiosity to explore complex datasets, uncover patterns, and build predictive models that solve real-world problems. My objective is to apply my technical expertise and analytical mindset to a challenging role in data science, where I can contribute to innovative projects and continue my professional growth.
                 </p>
             </div>
@@ -271,157 +459,171 @@
                  <div class="card p-6 rounded-xl" data-tilt>
                     <h3 class="text-xl font-semibold text-blue-400 mb-4" style="transform: translateZ(20px);">Programming & Data Science</h3>
                     <div class="flex flex-wrap gap-3" style="transform: translateZ(20px);">
-                        <span class="bg-gray-800 border border-cyan-500/30 text-cyan-300 py-1.5 px-4 rounded-full text-sm">Python</span>
-                        <span class="bg-gray-800 border border-gray-500/30 text-gray-300 py-1.5 px-4 rounded-full text-sm">Java</span>
-                        <span class="bg-gray-800 border border-gray-500/30 text-gray-300 py-1.5 px-4 rounded-full text-sm">C/C++</span>
-                        <span class="bg-gray-800 border border-cyan-500/30 text-cyan-300 py-1.5 px-4 rounded-full text-sm">Data Analysis</span>
-                        <span class="bg-gray-800 border border-cyan-500/30 text-cyan-300 py-1.5 px-4 rounded-full text-sm">Machine Learning</span>
-                         <span class="bg-gray-800 border border-cyan-500/30 text-cyan-300 py-1.5 px-4 rounded-full text-sm">Firestore</span>
+                        <!-- These spans will inherit color from CSS vars, but for light mode we need to adjust -->
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Python</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Java</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">C/C++</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Data Analysis</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Machine Learning</span>
+                         <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Firestore</span>
                     </div>
                 </div>
                 <div class="card p-6 rounded-xl" data-tilt>
                     <h3 class="text-xl font-semibold text-blue-400 mb-4" style="transform: translateZ(20px);">Development & Tools</h3>
                     <div class="flex flex-wrap gap-3" style="transform: translateZ(20px);">
-                        <span class="bg-gray-800 border border-gray-500/30 text-gray-300 py-1.5 px-4 rounded-full text-sm">Web Development</span>
-                        <span class="bg-gray-800 border border-gray-500/30 text-gray-300 py-1.5 px-4 rounded-full text-sm">Mobile App Development (Flutter)</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Web Development</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Mobile App Development (Flutter)</span>
                     </div>
                 </div>
                  <div class="card p-6 rounded-xl" data-tilt>
                     <h3 class="text-xl font-semibold text-blue-400 mb-4" style="transform: translateZ(20px);">Professional Skills</h3>
                     <div class="flex flex-wrap gap-3" style="transform: translateZ(20px);">
-                        <span class="bg-gray-800 border border-gray-500/30 text-gray-300 py-1.5 px-4 rounded-full text-sm">Analytical Problem-Solving</span>
-                        <span class="bg-gray-800 border border-gray-500/30 text-gray-300 py-1.5 px-4 rounded-full text-sm">Agile Development</span>
-                        <span class="bg-gray-800 border border-gray-500/30 text-gray-300 py-1.5 px-4 rounded-full text-sm">Team Collaboration</span>
-                        <span class="bg-gray-800 border border-gray-500/30 text-gray-300 py-1.5 px-4 rounded-full text-sm">Fast Learning</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Analytical Problem-Solving</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Agile Development</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Team Collaboration</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Fast Learning</span>
                     </div>
                 </div>
             </div>
         </section>
-<section id="projects" class="section">
-  <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">
-    Projects
-  </h2>
 
-  <div class="space-y-10 stagger-in max-w-4xl mx-auto">
-
-    <!-- Migrant Worker & Job Management System -->
-    <div class="card p-8 rounded-xl" data-tilt>
-      <div style="transform: translateZ(20px);">
-        <h3 class="text-xl font-semibold text-blue-400">
-          Migrant Worker & Job Management System
-        </h3>
-        <p class="text-gray-400 text-sm mb-4">
-          Academic Capstone Project | Aug 2024 - Feb 2025
-        </p>
-        <p class="text-gray-300 mb-4">
-          A comprehensive platform to support migrant workers by providing verified digital registration, job matching with local employers, and access to welfare services.
-        </p>
-        <ul class="list-disc list-inside space-y-2 text-gray-300 stagger-in">
-          <li>
-            Engineered a real-time data synchronization system using
-            <span class="font-semibold text-cyan-400">Flutter and Firestore</span>,
-            ensuring data integrity across the platform.
-          </li>
-          <li>
-            Contributed to the full project lifecycle, from initial design and database architecture to development and testing within a 3-person team.
-          </li>
-          <li>
-            Developed and integrated an
-            <span class="font-semibold text-cyan-400">AI-powered chatbot</span>
-            to provide users with instant, 24/7 assistance and accurate job estimations, improving user engagement.
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Dementia Virtual Memory Assistant -->
-    <div class="card p-8 rounded-xl" data-tilt>
-      <div style="transform: translateZ(20px);">
-        <h3 class="text-xl font-semibold text-blue-400">
-          Dementia Virtual Memory Assistant (DVMA)
-        </h3>
-        <p class="text-gray-400 text-sm mb-4">
-          Mobile Application | Aug 2025 - Oct 2025
-        </p>
-        <p class="text-gray-300 mb-4">
-          A compassionate mobile application designed to support dementia patients in managing their daily lives, preserving memories, and staying connected with caregivers and family. The app provides role-based access for Users, Caretakers, and Admins, featuring real-time notifications, AI-powered chat assistance, and face recognition capabilities to enhance the quality of life for dementia patients.
-        </p>
-        <ul class="list-disc list-inside space-y-2 text-gray-300 stagger-in">
-          <li>
-            Developed a
-            <span class="font-semibold text-cyan-400">Flutter-based</span>
-            mobile app with secure role-based access for patients, caretakers, and admins.
-          </li>
-          <li>
-            Integrated
-            <span class="font-semibold text-cyan-400">Gemini-powered AI chat assistant</span>
-            to help patients recall memories, manage tasks, and stay engaged.
-          </li>
-          <li>
-            Implemented
-            <span class="font-semibold text-cyan-400">face recognition</span>
-            to identify family members, enhancing emotional connections and user safety.
-          </li>
-          <li>
-            Built real-time
-            <span class="font-semibold text-cyan-400">location sharing</span>
-            and
-            <span class="font-semibold text-cyan-400">live caretaker tracking</span>
-            for safety and coordination.
-          </li>
-          <li>
-            Added
-            <span class="font-semibold text-cyan-400">Firebase</span>
-            backend for authentication, cloud storage, and push notifications.
-          </li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-</section>
-<!--Experiemce-->
-
-<section id="projects" class="section">
-  <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">
-    Experience
-  </h2>
-
-  <!-- 15-Days Internship @ Ybi Foundation -->
-<div class="card p-8 rounded-xl" data-tilt>
-  <div style="transform: translateZ(20px);">
-    <h3 class="text-xl font-semibold text-blue-400">
-      Intern at Ybi Foundation
-    </h3>
-    <p class="text-gray-400 text-sm mb-4">
-      Artificial Intelligence & GenAI Internship | Oct 2025 (15 days)
-    </p>
-    <p class="text-gray-300 mb-4">
-      A beginner-friendly internship program focused on gaining practical experience in Artificial Intelligence and Generative AI through live sessions, mentor guidance, and hands-on projects under the mentorship of Ybi Foundation experts.
-    </p>
-    <ul class="list-disc list-inside space-y-2 text-gray-300 stagger-in">
-      <li>
-        Learned and applied various <span class="font-semibold text-cyan-400">programming languages and AI technologies</span> to build real-world projects.
-      </li>
-      <li>
-        Worked collaboratively on <span class="font-semibold text-cyan-400">assigned AI/ML projects</span> under industry mentorship.
-      </li>
-      <li>
-        Participated in <span class="font-semibold text-cyan-400">project reviews and feedback sessions</span> to enhance problem-solving and coding skills.
-      </li>
-      <li>
-        Contributed to <span class="font-semibold text-cyan-400">design and implementation</span> of AI-based solutions with a focus on innovation and learning.
-      </li>
-      <li>
-        Conducted <span class="font-semibold text-cyan-400">research on latest AI trends</span> and explored the applications of Generative AI in emerging domains.
-      </li>
-      <li>
-        Collaborated effectively with team members, mentors, and other participants to foster <span class="font-semibold text-cyan-400">teamwork and professional growth</span>.
-      </li>
-    </ul>
-  </div>
-</div>
-</section>
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+          <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">
+            Projects
+          </h2>
+        
+          <div class="space-y-10 stagger-in max-w-4xl mx-auto">
+        
+            <!-- Migrant Worker & Job Management System -->
+            <div class="card p-8 rounded-xl" data-tilt>
+              <div style="transform: translateZ(20px);">
+                <h3 class="text-xl font-semibold text-blue-400">
+                  Migrant Worker & Job Management System
+                </h3>
+                <p class="text-sm mb-4" style="color: var(--secondary-text);">
+                  Academic Capstone Project | Aug 2024 - Feb 2025
+                </p>
+                <p class="mb-4" style="color: var(--secondary-text);">
+                  A comprehensive platform to support migrant workers by providing verified digital registration, job matching with local employers, and access to welfare services.
+                </p>
+                <ul class="list-disc list-inside space-y-2 stagger-in" style="color: var(--secondary-text);">
+                  <li>
+                    Engineered a real-time data synchronization system using
+                    <span class="font-semibold" style="color: var(--primary-text);">Flutter and Firestore</span>,
+                    ensuring data integrity across the platform.
+                  </li>
+                  <li>
+                    Contributed to the full project lifecycle, from initial design and database architecture to development and testing within a 3-person team.
+                  </li>
+                  <li>
+                    Developed and integrated an
+                    <span class="font-semibold" style="color: var(--primary-text);">AI-powered chatbot</span>
+                    to provide users with instant, 24/7 assistance and accurate job estimations, improving user engagement.
+                  </li>
+                </ul>
+                <div class="mt-6 flex justify-start">
+                    <a href="https://github.com/projectteam2k24/migrantworker" target="_blank" rel="noopener noreferrer" class="font-medium py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105"
+                       style="background-color: var(--fab-bg); color: var(--fab-text);">
+                        View on GitHub
+                    </a>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Dementia Virtual Memory Assistant -->
+            <div class="card p-8 rounded-xl" data-tilt>
+              <div style="transform: translateZ(20px);">
+                <h3 class="text-xl font-semibold text-blue-400">
+                  Dementia Virtual Memory Assistant (DVMA)
+                </h3>
+                <p class="text-sm mb-4" style="color: var(--secondary-text);">
+                  Mobile Application | Aug 2025 - Oct 2025
+                </p>
+                <p class="mb-4" style="color: var(--secondary-text);">
+                  A compassionate mobile application designed to support dementia patients in managing their daily lives, preserving memories, and staying connected with caregivers and family.
+                </p>
+                <ul class="list-disc list-inside space-y-2 stagger-in" style="color: var(--secondary-text);">
+                  <li>
+                    Developed a
+                    <span class="font-semibold" style="color: var(--primary-text);">Flutter-based</span>
+                    mobile app with secure role-based access for patients, caretakers, and admins.
+                  </li>
+                  <li>
+                    Integrated
+                    <span class="font-semibold" style="color: var(--primary-text);">Gemini-powered AI chat assistant</span>
+                    to help patients recall memories, manage tasks, and stay engaged.
+                  </li>
+                  <li>
+                    Implemented
+                    <span class="font-semibold" style="color: var(--primary-text);">face recognition</span>
+                    to identify family members, enhancing emotional connections and user safety.
+                  </li>
+                  <li>
+                    Built real-time
+                    <span class="font-semibold" style="color: var(--primary-text);">location sharing</span>
+                    and
+                    <span class="font-semibold" style="color: var(--primary-text);">live caretaker tracking</span>
+                    for safety and coordination.
+                  </li>
+                  <li>
+                    Added
+                    <span class="font-semibold" style="color: var(--primary-text);">Firebase</span>
+                    backend for authentication, cloud storage, and push notifications.
+                  </li>
+                </ul>
+                <div class="mt-6 flex justify-start">
+                    <a href="https://github.com/ajmal-uk/dementia-virtual-memory" target="_blank" rel="noopener noreferrer" class="font-medium py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105"
+                       style="background-color: var(--fab-bg); color: var(--fab-text);">
+                        View on GitHub
+                    </a>
+                </div>
+              </div>
+            </div>
+        
+          </div>
+        </section>
+        
+        <!--Experience-->
+        <section id="experience" class="section">
+          <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">
+            Experience
+          </h2>
+        
+        <div class="card p-8 rounded-xl" data-tilt>
+          <div style="transform: translateZ(20px);">
+            <h3 class="text-xl font-semibold text-blue-400">
+              Intern at Ybi Foundation
+            </h3>
+            <p class="text-sm mb-4" style="color: var(--secondary-text);">
+              Artificial Intelligence & GenAI Internship | Oct 2025 (15 days)
+            </p>
+            <p class="mb-4" style="color: var(--secondary-text);">
+              A beginner-friendly internship program focused on gaining practical experience in Artificial Intelligence and Generative AI through live sessions, mentor guidance, and hands-on projects.
+            </p>
+            <ul class="list-disc list-inside space-y-2 stagger-in" style="color: var(--secondary-text);">
+              <li>
+                Learned and applied various <span class="font-semibold" style="color: var(--primary-text);">programming languages and AI technologies</span> to build real-world projects.
+              </li>
+              <li>
+                Worked collaboratively on <span class="font-semibold" style="color: var(--primary-text);">assigned AI/ML projects</span> under industry mentorship.
+              </li>
+              <li>
+                Participated in <span class="font-semibold" style="color: var(--primary-text);">project reviews and feedback sessions</span> to enhance problem-solving and coding skills.
+              </li>
+              <li>
+                Contributed to <span class="font-semibold" style="color: var(--primary-text);">design and implementation</span> of AI-based solutions with a focus on innovation and learning.
+              </li>
+              <li>
+                Conducted <span class="font-semibold" style="color: var(--primary-text);">research on latest AI trends</span> and explored the applications of Generative AI in emerging domains.
+              </li>
+              <li>
+                Collaborated effectively with team members, mentors, and other participants to foster <span class="font-semibold" style="color: var(--primary-text);">teamwork and professional growth</span>.
+              </li>
+            </ul>
+          </div>
+        </div>
+        </section>
 
         <!-- Education Section -->
         <section id="education" class="section">
@@ -430,28 +632,36 @@
                 <div class="card p-6 rounded-xl" data-tilt>
                     <div style="transform: translateZ(20px);">
                         <h3 class="text-xl font-semibold text-blue-400">Master of Computer Application (MCA)</h3>
-                        <p class="text-gray-400">APJ Abdul Kalam Technological University</p>
-                        <p class="text-gray-500 text-sm">Expected May 2027</p>
+                        <p style="color: var(--secondary-text);">APJ Abdul Kalam Technological University</p>
+                        <p class="text-sm" style="color: var(--secondary-text); opacity: 0.7;">Expected May 2027</p>
                     </div>
                 </div>
                 <div class="card p-6 rounded-xl" data-tilt>
                      <div style="transform: translateZ(20px);">
                         <h3 class="text-xl font-semibold text-blue-400">Bachelor of Science - Computer Science</h3>
-                        <p class="text-gray-400">Kannur University</p>
-                        <p class="text-gray-500 text-sm">Graduated May 2025 | CGPA: 8.752</p>
+                        <p style="color: var(--secondary-text);">Kannur University</p>
+                        <p class="text-sm" style="color: var(--secondary-text); opacity: 0.7;">Graduated May 2025 | CGPA: 8.752</p>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!--Certification Section-->
-         <section id="education" class="section">
+         <section id="certifications" class="section">
             <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">Certifications</h2>
             <div class="space-y-8 stagger-in max-w-4xl mx-auto">
-                 <div class="card p-6 rounded-xl" data-tilt>
-                    <div style="transform: translateZ(20px);">
+                 <div id="certificate-card" class="card p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 cursor-pointer" data-tilt data-tilt-reset="false">
+                    <div class="md:w-1/3 flex-shrink-0">
+                        <img src="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/IBMDataScience.jpg" 
+                             alt="IBM Data Science Certificate" 
+                             class="rounded-lg object-cover w-full shadow-lg" 
+                             id="certificate-thumbnail"
+                             data-modal-src="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/IBMDataScience.jpg">
+                    </div>
+                    <div class="md:w-2/3" style="transform: translateZ(20px);">
                         <h3 class="text-xl font-semibold text-blue-400">IBM Data Science Professional Certificate</h3>
-                        <p class="text-gray-400">Completed certification covering data analysis, visualization, and machine learning with Python.</p>
+                        <p class="mt-2" style="color: var(--secondary-text);">Completed certification covering data analysis, visualization, and machine learning with Python.</p>
+                        <p class="text-sm mt-4" style="color: var(--secondary-text); opacity: 0.7;">(Click to view certificate)</p>
                     </div>
                 </div>
             </div>
@@ -460,7 +670,7 @@
         <!-- Contact Section -->
         <section id="contact" class="section text-center">
             <h2 class="text-3xl font-bold mb-4 animated-gradient tracking-wide">Get In Touch</h2>
-            <p class="max-w-xl mx-auto mb-8 text-gray-400">Have a question or want to work together? Fill out the form below and I'll get back to you as soon as possible.</p>
+            <p class="max-w-xl mx-auto mb-8" style="color: var(--secondary-text);">Have a question or want to work together? Fill out the form below and I'll get back to you as soon as possible.</p>
             <div class="card p-8 rounded-xl shadow-lg max-w-2xl mx-auto" data-tilt>
                 <form id="contactForm" action="https://formspree.io/f/xanpqjjz" method="POST" class="space-y-6" style="transform: translateZ(20px);">
                     <div>
@@ -494,10 +704,10 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.282.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.843-.038 1.096-.047 3.232-.047h.001zm4.908 1.646c-.458 0-.83.372-.83.83s.372.83.83.83.83-.372.83-.83-.372-.83-.83-.83zm-6.407 1.558c-1.29 0-2.333.93-2.333 2.175 0 1.245 1.043 2.175 2.333 2.175s2.333-.93 2.333-2.175c0-1.245-1.043-2.175-2.333-2.175zm0 3.493c-.694 0-1.255-.56-1.255-1.255s.56-1.255 1.255-1.255c.694 0 1.255.56 1.255 1.255s-.56 1.255-1.255 1.255z"/></svg>
         </a>
         <a href="https://github.com/amarjithanand" target="_blank" class="fab-option" aria-label="Github Profile">
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.42 7.86 10.95.58.11.79-.25.79-.56v-2.17c-3.2.69-3.88-1.39-3.88-1.39-.53-1.34-1.29-1.7-1.29-1.7-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.21 1.79 1.21 1.04 1.79 2.72 1.27 3.38.97.1-.76.41-1.27.75-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.53.11-3.19 0 0 .98-.32 3.21 1.17a11.15 11.15 0 0 1 5.85 0c2.23-1.49 3.21-1.17 3.21-1.17.63 1.66.23 2.89.11 3.19.75.8 1.2 1.82 1.2 3.07 0 4.4-2.68 5.35-5.24 5.64.42.36.8 1.09.8 2.21v3.28c0 .31.21.68.8.56A10.996 10.996 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/>
-  </svg>
-</a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.42 7.86 10.95.58.11.79-.25.79-.56v-2.17c-3.2.69-3.88-1.39-3.88-1.39-.53-1.34-1.29-1.7-1.29-1.7-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.21 1.79 1.21 1.04 1.79 2.72 1.27 3.38.97.1-.76.41-1.27.75-1.56-2.55-.29-5.23-1.27-5.23-5.65 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.53.11-3.19 0 0 .98-.32 3.21 1.17a11.15 11.15 0 0 1 5.85 0c2.23-1.49 3.21-1.17 3.21-1.17.63 1.66.23 2.89.11 3.19.75.8 1.2 1.82 1.2 3.07 0 4.4-2.68 5.35-5.24 5.64.42.36.8 1.09.8 2.21v3.28c0 .31.21.68.8.56A10.996 10.996 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/>
+            </svg>
+        </a>
         <a href="https://www.linkedin.com/in/amarjith-anand-49577a320/" target="_blank" class="fab-option" aria-label="LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
         </a>
@@ -507,11 +717,41 @@
         </div>
     </div>
 
+    <!-- Certificate Modal -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-black bg-opacity-80 z-[60] flex justify-center items-center p-4 cursor-pointer opacity-0 pointer-events-none">
+        <img id="modal-image" src="" alt="Certificate" class="max-w-full max-h-full rounded-lg shadow-2xl transform scale-90">
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
     <script>
-        // --- Enhanced Particle JS configuration ---
-        particlesJS('particles-js', { "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.1, "width": 1 }, "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.3 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true });
+        // --- Particle JS Configs ---
+        const darkParticlesConfig = { "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.1, "width": 1 }, "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.3 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true };
+        
+        const lightParticlesConfig = { "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#000000" }, "shape": { "type": "circle" }, "opacity": { "value": 0.3, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#000000", "opacity": 0.2, "width": 1 }, "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.3 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true };
+        
+        // --- Function to load particles based on theme ---
+        const loadParticles = (isLight) => {
+            if (window.particlesJS) {
+                // If particles.js is already loaded and has an instance, destroy it first
+                if (window.pJSDom && window.pJSDom.length > 0) {
+                    window.pJSDom[0].pJS.fn.vendors.destroypJS();
+                    window.pJSDom = [];
+                }
+                // Load the new config
+                if (isLight) {
+                    particlesJS('particles-js', lightParticlesConfig);
+                } else {
+                    particlesJS('particles-js', darkParticlesConfig);
+                }
+            }
+        }
+
+        // --- Initial Particle Load ---
+        const isCurrentThemeLight = document.documentElement.classList.contains('light');
+        loadParticles(isCurrentThemeLight);
+
 
         // --- Tilt Effect Initialization ---
         VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
@@ -526,6 +766,7 @@
             const progressBar = document.getElementById('scroll-progress');
             const fabContainer = document.getElementById('fab-container');
             const fabMain = document.getElementById('fab-main');
+            const themeToggle = document.getElementById('theme-toggle');
 
             // --- Expanding FAB Logic ---
             fabMain.addEventListener('click', (e) => {
@@ -556,7 +797,7 @@
                             setTimeout(() => {
                                 target.style.opacity = '1';
                                 target.style.transform = 'translateY(0)';
-                            }, i * 150); // 150ms delay between each item
+                            }, i * 150);
                         });
                     }
                 });
@@ -569,13 +810,65 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Optional: stop observing once visible
+                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
             sections.forEach(section => sectionObserver.observe(section));
 
+            // --- Navbar Logic ---
+            const navbar = document.getElementById('navbar');
+            const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+            const mobileNavMenu = document.getElementById('mobile-nav-menu');
+
+            mobileNavToggle.addEventListener('click', () => {
+                document.body.classList.toggle('mobile-nav-active');
+            });
+
+            mobileNavMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.body.classList.remove('mobile-nav-active');
+                });
+            });
+
+            // --- Certificate Modal Logic ---
+            const modalBackdrop = document.getElementById('modal-backdrop');
+            const modalImage = document.getElementById('modal-image');
+            const certCard = document.getElementById('certificate-card');
+            const certThumbnail = document.getElementById('certificate-thumbnail');
+
+            if (certCard) {
+                certCard.addEventListener('click', () => {
+                    modalImage.src = certThumbnail.dataset.modalSrc; 
+                    modalBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+                    modalImage.classList.remove('scale-90');
+                });
+            }
+
+            if (modalBackdrop) {
+                modalBackdrop.addEventListener('click', () => {
+                    modalBackdrop.classList.add('opacity-0', 'pointer-events-none');
+                    modalImage.classList.add('scale-90');
+                    setTimeout(() => { modalImage.src = ""; }, 300); 
+                });
+            }
+
+            // --- Theme Toggle Logic ---
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    // 1. Toggle class on <html>
+                    const isLight = document.documentElement.classList.toggle('light');
+                    
+                    // 2. Update localStorage
+                    localStorage.theme = isLight ? 'light' : 'dark';
+                    
+                    // 3. Reload particles with new config
+                    loadParticles(isLight);
+                });
+            }
+
         });
     </script>
 </body>
 </html>
+
