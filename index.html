@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+
+
+
+    <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +19,7 @@
     <style>
         /* --- Dark Theme (Default) --- */
         :root {
-            --background-color: #050816;
+            --background-color: #000000;
             --primary-text: #e5e7eb;
             --secondary-text: #9ca3af;
             --accent-color: #2563eb;
@@ -31,25 +34,6 @@
             --scrollbar-thumb-hover: #3f3f46;
             --navbar-bg: rgba(5, 8, 22, 0.7);
         }
-
-        /* --- Light Theme (New B&W/Grey Theme) --- */
-        html.light {
-            --background-color: #ffffff; /* White background */
-            --primary-text: #111827;     /* Near-black text */
-            --secondary-text: #6b7280;   /* Medium gray text */
-            --accent-color: #2563eb;     /* Keeping accent blue */
-            --accent-hover: #1d4ed8;
-            --card-bg: rgba(255, 255, 255, 0.75); /* White card */
-            --card-border: #e5e7eb; /* Light gray border */
-            --input-bg: #f9fafb; /* Off-white input */
-            --fab-bg: #f3f4f6; /* Lighter fab */
-            --fab-hover: #e5e7eb; /* Light gray fab hover */
-            --fab-text: #111827; /* Near-black fab text */
-            --scrollbar-thumb: #d1d5db;
-            --scrollbar-thumb-hover: #b0b8c4;
-            --navbar-bg: rgba(255, 255, 255, 0.7);
-        }
-
         html {
             scroll-behavior: smooth;
         }
@@ -340,18 +324,43 @@
         }
 
     </style>
+<script>
+function openResumeModal(src) {
+  const modal = document.getElementById('resumeModal');
+  const img = document.getElementById('resumeImg');
 
-    <!-- Theme initialization script (prevents FOUC) -->
-    <script>
-        (function() {
-            if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
-                document.documentElement.classList.add('light');
-            } else {
-                document.documentElement.classList.remove('light');
-            }
-        })();
-    </script>
+  img.src = src;
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeResumeModal() {
+  const modal = document.getElementById('resumeModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+</script>
+
 </head>
+
+<div id="resumeModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center">
+  <div class="relative max-w-3xl w-full mx-4">
+    
+    <button 
+      onclick="closeResumeModal()" 
+      class="absolute -top-10 right-0 text-white text-sm px-3 py-1 border border-zinc-700 rounded hover:bg-red-500 transition">
+      Close ✕
+    </button>
+
+    <img 
+      id="resumeImg" 
+      src="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/resume.jpg" 
+      alt="Resume Preview" 
+      class="w-full rounded-xl border border-zinc-800 shadow-2xl"
+    >
+  </div>
+</div>
+
 <body class="antialiased">
 
     <div id="particles-js"></div>
@@ -383,11 +392,7 @@
                     </a>
                 </div>
 
-                <!-- Theme Switch Button -->
-                <button id="theme-toggle" type="button" class="nav-link p-2 rounded-lg">
-                    <svg id="theme-icon-sun" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-1.636 4.95l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 111.414-1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zm1.636 4.95l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zm-1.414-10.607a1 1 0 000 1.414l.707.707a1 1 0 101.414-1.414l-.707-.707a1 1 0 00-1.414 0z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    <svg id="theme-icon-moon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                </button>
+               
 
                 <!-- Mobile Nav Button -->
                 <button id="mobile-nav-toggle" class="md:hidden nav-link z-[101]">
@@ -420,27 +425,62 @@
     <main class="container mx-auto px-4 md:px-8 max-w-5xl">
 
         <!-- Home Section -->
-        <section id="home" class="section flex flex-col-reverse md:flex-row items-center justify-center min-h-screen gap-12">
-            <div class="md:w-1/2 text-center md:text-left">
-                <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-4" style="color: var(--primary-text);">Amarjith Anand</h1>
-                <p class="text-xl md:text-2xl animated-gradient font-semibold">MCA '27 - CET | Entry Level Data Scientist</p>
-                <p class="mt-6 max-w-xl mx-auto md:mx-0 text-lg" style="color: var(--secondary-text);">
-                    Leveraging a foundation in computer science to build intelligent, data-driven solutions and uncover actionable insights.
-                </p>
-                <div class="mt-10 flex justify-center md:justify-start gap-4">
-                     <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50">Get in Touch</a>
-                     <a href="https://www.linkedin.com/in/amarjith-anand-49577a320/" target="_blank" class="font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-                        style="background-color: var(--fab-bg); color: var(--fab-text); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">View LinkedIn</a>
-                </div>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <div class="hero-image-container">
-                    <div class="hero-image">
-                        <img src="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/hero.jpg" alt="Amarjith Anand" class="rounded-full w-60 h-60 md:w-72 md:h-72 object-cover">
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section id="home" class="min-h-screen flex items-center text-white relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+    
+    <!-- Left Content -->
+    <div class="space-y-10 reveal active">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-600/30 bg-blue-600/10 text-blue-500 text-[10px] font-black uppercase tracking-[0.25em]">
+        Entry-Level Data Scientist
+      </div>
+
+      <h1 class="text-6xl md:text-8xl font-extrabold leading-[0.95] tracking-tighter">
+        <span class="text-blue-600">Amarjith Anand</span>
+      </h1>
+
+      <h3 class="text-xl md:text-2xl font-semibold text-blue-400 tracking-wide">
+        MCA ’27 · CET · Entry-Level Data Scientist
+      </h3>
+
+      <p class="text-lg md:text-xl text-zinc-400 max-w-xl leading-relaxed font-light">
+        Entry-level Data Scientist focused on transforming raw data into meaningful insights through practical machine learning projects.
+      </p>
+
+      <div class="flex flex-wrap gap-5 pt-4">
+        <a href="#" onclick="openResumeModal('https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/resume.jpg'); return false;" class="px-10 py-5 bg-blue-600 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-2xl red-glow">
+          View Resume
+        </a>
+        <a href="#contact" class="px-10 py-5 border border-zinc-700 text-white font-bold uppercase tracking-widest hover:border-white hover:bg-zinc-900 transition-all">
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Image -->
+    <div class="relative reveal active hidden lg:block">
+      <div class="relative rounded-md overflow-hidden border border-zinc-800 group shadow-2xl">
+        <img 
+          src="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/hero.jpg" 
+          alt="Amarjith Anand" 
+          class="w-[480px] h-[480px] object-cover opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-90 transition-all duration-700"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+
+        <div class="absolute bottom-10 left-10 right-10">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="h-[1px] w-12 bg-blue-600"></div>
+            <span class="text-[10px] uppercase tracking-[0.3em] font-black text-white/70">
+              Amarjith Anand
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 
         <!-- About Section -->
         <section id="about" class="section">
@@ -933,19 +973,6 @@ modalBackdrop.addEventListener('click', () => {
     }, 300);
 });
 
-            // --- Theme Toggle Logic ---
-            if (themeToggle) {
-                themeToggle.addEventListener('click', () => {
-                    // 1. Toggle class on <html>
-                    const isLight = document.documentElement.classList.toggle('light');
-                    
-                    // 2. Update localStorage
-                    localStorage.theme = isLight ? 'light' : 'dark';
-                    
-                    // 3. Reload particles with new config
-                    loadParticles(isLight);
-                });
-            }
 
         });
     </script>
@@ -959,4 +986,3 @@ modalBackdrop.addEventListener('click', () => {
 </div>
 </body>
 </html>
-
