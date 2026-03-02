@@ -1,6 +1,3 @@
-
-
-
     <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -19,47 +16,69 @@
     <style>
         /* --- Dark Theme (Default) --- */
         :root {
-            --background-color: #000000;
-            --primary-text: #e5e7eb;
-            --secondary-text: #9ca3af;
-            --accent-color: #2563eb;
-            --accent-hover: #1d4ed8;
-            --card-bg: rgba(15, 23, 42, 0.75);
-            --card-border: rgba(56, 189, 248, 0.1);
-            --input-bg: rgba(22, 30, 50, 0.5);
-            --fab-bg: #1f2937;
-            --fab-hover: #374151;
-            --fab-text: white;
-            --scrollbar-thumb: #27272a;
-            --scrollbar-thumb-hover: #3f3f46;
-            --navbar-bg: rgba(5, 8, 22, 0.7);
-        }
+    --background-color: #0f0f0f;
+    --primary-text: #f5f5f5;
+    --secondary-text: #a1a1aa;
+
+    /* Accent becomes neutral silver instead of blue */
+    --accent-color: #d4d4d8;
+    --accent-hover: #ffffff;
+
+    /* Cards */
+    --card-bg: rgba(24, 24, 27, 0.85);
+    --card-border: rgba(255, 255, 255, 0.08);
+
+    /* Inputs */
+    --input-bg: rgba(39, 39, 42, 0.6);
+
+    /* FAB */
+    --fab-bg: #18181b;
+    --fab-hover: #27272a;
+    --fab-text: #f4f4f5;
+
+    --scrollbar-thumb: #3f3f46;
+    --scrollbar-thumb-hover: #52525b;
+
+    --navbar-bg: rgba(15, 15, 15, 0.85);
+}
         html {
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background-color);
-            color: var(--primary-text);
-            overflow-x: hidden;
-            cursor: default;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+    body {
+    font-family: 'Inter', sans-serif;
+    background: #111111;
+    color: var(--primary-text);
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+    cursor: default;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
 
         /* --- Grainy Background Overlay --- */
         /* This pseudo-element adds a subtle noise texture over the entire page */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.035"/></svg>');
-            z-index: 1000; /* Places it on top of all content */
-            pointer-events: none; /* Allows clicks to pass through */
-        }
+        /* --- Paper Grain Texture --- */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+
+    /* Multi-layer grain for paper feel */
+    background-image:
+        radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        radial-gradient(rgba(0,0,0,0.08) 1px, transparent 1px);
+
+    background-size: 3px 3px, 4px 4px;
+    background-position: 0 0, 1px 1px;
+
+    mix-blend-mode: overlay;
+    opacity: 0.4;
+}
         /* --- End Grainy Background --- */
 
         #particles-js {
@@ -95,7 +114,7 @@
         }
         .card:hover {
             transform: translateY(-8px) perspective(1000px);
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
         }
         html.light .card:hover {
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -103,12 +122,12 @@
 
 
         .animated-gradient {
-            background: linear-gradient(90deg, #38bdf8, #a78bfa, #38bdf8);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-flow 5s linear infinite;
-        }
+    background: linear-gradient(90deg, #ffffff, #a1a1aa, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-flow 6s linear infinite;
+}
         @keyframes gradient-flow {
             to { background-position: 200% center; }
         }
@@ -124,8 +143,8 @@
         .scroll-progress-bar-inner {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, #38bdf8, #a78bfa);
-            box-shadow: 0 0 10px #a78bfa;
+            background: linear-gradient(90deg, #e5e5e5, #9ca3af);
+box-shadow: 0 0 10px rgba(255,255,255,0.2);
             transition: width 0.1s ease-out;
         }
 
@@ -143,14 +162,14 @@
 
         .hero-image-container {
             padding: 8px;
-            background: linear-gradient(45deg, rgba(56, 189, 248, 0.5), rgba(167, 139, 250, 0.5));
+            background: linear-gradient(45deg, rgba(255,255,255,0.15), rgba(161,161,170,0.15));
             border-radius: 50%;
             animation: pulse-glow 4s infinite ease-in-out;
         }
 
         @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(167, 139, 250, 0.4); }
-            50% { box-shadow: 0 0 40px rgba(56, 189, 248, 0.8); }
+            0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.08); }
+50% { box-shadow: 0 0 35px rgba(255,255,255,0.15); }
         }
 
         .hero-image {
@@ -173,7 +192,7 @@
         .form-input:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.15);
         }
         .form-input::placeholder {
             color: var(--secondary-text);
@@ -208,7 +227,7 @@
 
         .fab-main {
             background-color: var(--accent-color);
-            color: white;
+            color: black;
             z-index: 52;
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
@@ -373,7 +392,7 @@ function closeResumeModal() {
         <nav class="container mx-auto px-4 md:px-8 max-w-5xl flex justify-between items-center py-4">
             <!-- Logo/Name -->
             <a href="#home" class="text-xl font-bold animated-gradient">
-                Amarjith Anand
+                 
             </a>
             
             <!-- Right Side Wrapper -->
@@ -387,7 +406,7 @@ function closeResumeModal() {
                     <a href="#experience" class="nav-link transition-colors">Experience</a>
                     <a href="#education" class="nav-link transition-colors">Education</a>
                     <a href="#certifications" class="nav-link transition-colors">Certs</a>
-                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300">
+                    <a href="#contact" class="bg-zinc-800 hover:bg-zinc-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300">
                         Contact
                     </a>
                 </div>
@@ -430,16 +449,16 @@ function closeResumeModal() {
     
     <!-- Left Content -->
     <div class="space-y-10 reveal active">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-600/30 bg-blue-600/10 text-blue-500 text-[10px] font-black uppercase tracking-[0.25em]">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-700/30 bg-zinc-800/10 text-zinc-300 text-[10px] font-black uppercase tracking-[0.25em]">
         Entry-Level Data Scientist
       </div>
 
       <h1 class="text-6xl md:text-8xl font-extrabold leading-[0.95] tracking-tighter">
-        <span class="text-blue-600">Amarjith Anand</span>
+        <span class="text-zinc-100">Amarjith Anand</span>
       </h1>
 
-      <h3 class="text-xl md:text-2xl font-semibold text-blue-400 tracking-wide">
-        MCA ’27 · CET · Entry-Level Data Scientist
+      <h3 class="text-xl md:text-2xl font-semibold text-zinc-200 tracking-wide">
+        MCA&nbsp;@&nbsp;College&nbsp;of&nbsp;Engineering&nbsp;Trivandrum
       </h3>
 
       <p class="text-lg md:text-xl text-zinc-400 max-w-xl leading-relaxed font-light">
@@ -447,7 +466,7 @@ function closeResumeModal() {
       </p>
 
       <div class="flex flex-wrap gap-5 pt-4">
-        <a href="#" onclick="openResumeModal('https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/resume.jpg'); return false;" class="px-10 py-5 bg-blue-600 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-2xl red-glow">
+        <a href="#" onclick="openResumeModal('https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/resume.jpg'); return false;" class="px-10 py-5 bg-zinc-800 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-2xl red-glow">
           View Resume
         </a>
         <a href="#contact" class="px-10 py-5 border border-zinc-700 text-white font-bold uppercase tracking-widest hover:border-white hover:bg-zinc-900 transition-all">
@@ -468,7 +487,7 @@ function closeResumeModal() {
 
         <div class="absolute bottom-10 left-10 right-10">
           <div class="flex items-center gap-4 mb-5">
-            <div class="h-[1px] w-12 bg-blue-600"></div>
+            <div class="h-[1px] w-12 bg-zinc-800"></div>
             <span class="text-[10px] uppercase tracking-[0.3em] font-black text-white/70">
               Amarjith Anand
             </span>
@@ -486,8 +505,8 @@ function closeResumeModal() {
         <section id="about" class="section">
             <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">About Me</h2>
             <div class="card p-8 rounded-xl max-w-4xl mx-auto">
-                <p class="text-lg leading-relaxed" style="color: var(--secondary-text); transform: translateZ(20px);">
-                    A dedicated Computer Science graduate with proven skills in software development and a burgeoning passion for data science. I am driven by a curiosity to explore complex datasets, uncover patterns, and build predictive models that solve real-world problems. My objective is to apply my technical expertise and analytical mindset to a challenging role in data science, where I can contribute to innovative projects and continue my professional growth.
+                <p class="text-lg leading-relaxed" style="color: var(--secondary-text); transform: translateZ(20px); text-align : justify; ">
+                    MCA student at APJ Abdul Kalam Technological University with a strong foundation in machine learning, data science, and full-stack ML deployment. Independently designed and deployed end-to-end ML systems including a behavioral analytics platform powered by NLP and a static analysis-based Android malware detector,  both production-ready with FastAPI backends. Experienced in translating raw data into business intelligence through Power BI dashboards and DAX modeling. Comfortable owning complete pipelines from feature engineering and model training to frontend integration and cloud deployment.
                 </p>
             </div>
         </section>
@@ -497,31 +516,35 @@ function closeResumeModal() {
             <h2 class="text-3xl font-bold text-center mb-12 animated-gradient tracking-wide">Core Competencies</h2>
             <div class="space-y-8 stagger-in max-w-4xl mx-auto">
                  <div class="card p-6 rounded-xl"  >
-                    <h3 class="text-xl font-semibold text-blue-400 mb-4" style="transform: translateZ(20px);">Programming & Data Science</h3>
+                    <h3 class="text-xl font-semibold text-zinc-200 mb-4" style="transform: translateZ(20px);">Languages</h3>
                     <div class="flex flex-wrap gap-3" style="transform: translateZ(20px);">
                         <!-- These spans will inherit color from CSS vars, but for light mode we need to adjust -->
                         <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Python</span>
                         <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Java</span>
-                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">C/C++</span>
-                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Data Analysis</span>
-                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Machine Learning</span>
-                         <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Firestore</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">MySQL</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">C++</span>
                     </div>
                 </div>
                 <div class="card p-6 rounded-xl"  >
-                    <h3 class="text-xl font-semibold text-blue-400 mb-4" style="transform: translateZ(20px);">Development & Tools</h3>
+                    <h3 class="text-xl font-semibold text-zinc-200 mb-4" style="transform: translateZ(20px);">ML & Data</h3>
                     <div class="flex flex-wrap gap-3" style="transform: translateZ(20px);">
-                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Web Development</span>
-                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Mobile App Development (Flutter)</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Scikit - Learn</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Numpy</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Pandas</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Matplotlib</span>
                     </div>
                 </div>
                  <div class="card p-6 rounded-xl"  >
-                    <h3 class="text-xl font-semibold text-blue-400 mb-4" style="transform: translateZ(20px);">Professional Skills</h3>
+                    <h3 class="text-xl font-semibold text-zinc-200 mb-4" style="transform: translateZ(20px);">Tools & Platforms</h3>
                     <div class="flex flex-wrap gap-3" style="transform: translateZ(20px);">
-                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Analytical Problem-Solving</span>
-                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Agile Development</span>
-                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Team Collaboration</span>
-                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Fast Learning</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">FatsAPI</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Power BI</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Microsoft Excel</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Git</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">GitHub</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Power Query</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Firebase</span>
+                        <span class="py-1.5 px-4 rounded-full text-sm" style="background-color: var(--input-bg); color: var(--primary-text); border: 1px solid var(--card-border);">Flutter</span>
                     </div>
                 </div>
             </div>
@@ -535,34 +558,73 @@ function closeResumeModal() {
         
           <div class="space-y-10 stagger-in max-w-4xl mx-auto">
 
+              <!-- HabitScope -->
+<div class="card p-8 rounded-xl">
+  <div style="transform: translateZ(20px);">
+    <h3 class="text-xl font-semibold text-zinc-200">
+      HABITSCOPE - Machine Learning Driven Behavioral Analytics Platform
+    </h3>
+    <p class="text-sm mb-4" style="color: var(--secondary-text);">
+      Machine Learning Project | Feb 2026
+    </p>
+    <ul class="list-disc list-inside space-y-2 stagger-in" style="color: var(--secondary-text);">
+      <li>
+        Built a full-stack ML platform that converts daily behavioral logs into productivity scores and insights.
+      </li>
+      <li>
+        Deployed an optimized, cloud-ready ML pipeline enabling real-time prediction and trend analysis.
+      </li>
+      <li>Independently designed, implemented, and deployed the complete ML system from modeling to frontend integration.
+      </li>
+    </ul>
+    <div class="mt-6 flex justify-start">
+        <a href="https://github.com/amarjithanand/student-productivity-tracker" target="_blank" rel="noopener noreferrer" class="font-medium py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105"
+           style="background-color: var(--fab-bg); color: var(--fab-text);">
+            View on GitHub
+        </a>
+    </div>
+  </div>
+</div>
+
+   <!-- Android APK Malware Detection System -->
+            <div class="card p-8 rounded-xl"  >
+              <div style="transform: translateZ(20px);">
+                <h3 class="text-xl font-semibold text-zinc-200">
+                  Android APK Malware Detection System 
+                </h3>
+                <p class="text-sm mb-4" style="color: var(--secondary-text);">
+                  Machine Learning Project | January 2026
+                </p>
+               
+                <ul class="list-disc list-inside space-y-2 stagger-in" style="color: var(--secondary-text);">
+                  <li>ML-based Android APK malware detector using static permission analysis and Random Forest.</li>
+<li>Enables safe, fast malware classification without executing apps.</li>
+<li>Developed feature extraction, model training, and FastAPI deployment pipeline.</li>
+                </ul>
+                <div class="mt-6 flex justify-start">
+                    <a href="https://github.com/amarjithanand/apk-malware-detector" target="_blank" rel="noopener noreferrer" class="font-medium py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105"
+                       style="background-color: var(--fab-bg); color: var(--fab-text);">
+                        View on GitHub
+                    </a>
+                </div>
+              </div>
+            </div>
+
               <!-- E-Commerce Business Insight Dashboard -->
 <div class="card p-8 rounded-xl">
   <div style="transform: translateZ(20px);">
-    <h3 class="text-xl font-semibold text-blue-400">
+    <h3 class="text-xl font-semibold text-zinc-200">
       E-Commerce Business Insight Dashboard using Power BI
     </h3>
     <p class="text-sm mb-4" style="color: var(--secondary-text);">
       Data Analytics Project | Nov 2025
     </p>
-    <p class="mb-4" style="color: var(--secondary-text);">
-      A data analytics project that transforms raw retail transaction data into actionable business insights using Microsoft Power BI. The dashboard highlights revenue trends, customer distribution, profitability analysis, and sales behaviour across months and weekdays.
-    </p>
+  
     <ul class="list-disc list-inside space-y-2 stagger-in" style="color: var(--secondary-text);">
-      <li>
-        Analyzed Kaggle retail dataset and performed
-        <span class="font-semibold" style="color: var(--primary-text);">data cleaning and preparation</span>
-        for reporting accuracy.
-      </li>
-      <li>
-        Designed interactive dashboards with
-        <span class="font-semibold" style="color: var(--primary-text);">KPI metrics</span>
-        including revenue, profit, order volume, and customer base.
-      </li>
-      <li>
-        Implemented
-        <span class="font-semibold" style="color: var(--primary-text);">DAX measures</span>
-        for calculated insights such as monthly revenue trend and weekday profit performance.
-      </li>
+    <li>Interactive Power BI dashboard analyzing e-commerce sales, revenue, profit, and customer trends using DAX.</li>
+    <li>
+Delivered actionable business insights on revenue peaks, profit patterns, and customer distribution.</li>
+<li>Handled data cleaning, modeling, DAX measures, KPI creation, and full dashboard development.</li>
     </ul>
     <div class="mt-6 flex justify-start">
         <a href="https://github.com/amarjithanand/FUTURE_DS_01" target="_blank" rel="noopener noreferrer" class="font-medium py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105"
@@ -575,29 +637,16 @@ function closeResumeModal() {
             <!-- Migrant Worker & Job Management System -->
             <div class="card p-8 rounded-xl"  >
               <div style="transform: translateZ(20px);">
-                <h3 class="text-xl font-semibold text-blue-400">
+                <h3 class="text-xl font-semibold text-zinc-200">
                   Migrant Worker & Job Management System
                 </h3>
                 <p class="text-sm mb-4" style="color: var(--secondary-text);">
                   Academic Capstone Project | Aug 2024 - Feb 2025
                 </p>
-                <p class="mb-4" style="color: var(--secondary-text);">
-                  A comprehensive platform to support migrant workers by providing verified digital registration, job matching with local employers, and access to welfare services.
-                </p>
                 <ul class="list-disc list-inside space-y-2 stagger-in" style="color: var(--secondary-text);">
-                  <li>
-                    Engineered a real-time data synchronization system using
-                    <span class="font-semibold" style="color: var(--primary-text);">Flutter and Firestore</span>,
-                    ensuring data integrity across the platform.
-                  </li>
-                  <li>
-                    Contributed to the full project lifecycle, from initial design and database architecture to development and testing within a 3-person team.
-                  </li>
-                  <li>
-                    Developed and integrated an
-                    <span class="font-semibold" style="color: var(--primary-text);">AI-powered chatbot</span>
-                    to provide users with instant, 24/7 assistance and accurate job estimations, improving user engagement.
-                  </li>
+                <li>AI-enabled Flutter app connecting contractors, workers, job providers, and admins for workforce and job management.</li>
+<li>Improved transparency, coordination, and efficiency in migrant worker recruitment and local job tracking.</li>
+<li>Developed Admin and Worker modules in a group project of 3 members.</li>
                 </ul>
                 <div class="mt-6 flex justify-start">
                     <a href="https://github.com/projectteam2k24/migrantworker" target="_blank" rel="noopener noreferrer" class="font-medium py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105"
@@ -608,55 +657,7 @@ function closeResumeModal() {
               </div>
             </div>
         
-            <!-- Dementia Virtual Memory Assistant -->
-            <div class="card p-8 rounded-xl"  >
-              <div style="transform: translateZ(20px);">
-                <h3 class="text-xl font-semibold text-blue-400">
-                  Dementia Virtual Memory Assistant (DVMA)
-                </h3>
-                <p class="text-sm mb-4" style="color: var(--secondary-text);">
-                  Mobile Application | Aug 2025 - Oct 2025
-                </p>
-                <p class="mb-4" style="color: var(--secondary-text);">
-                  A compassionate mobile application designed to support dementia patients in managing their daily lives, preserving memories, and staying connected with caregivers and family.
-                </p>
-                <ul class="list-disc list-inside space-y-2 stagger-in" style="color: var(--secondary-text);">
-                  <li>
-                    Developed a
-                    <span class="font-semibold" style="color: var(--primary-text);">Flutter-based</span>
-                    mobile app with secure role-based access for patients, caretakers, and admins.
-                  </li>
-                  <li>
-                    Integrated
-                    <span class="font-semibold" style="color: var(--primary-text);">Gemini-powered AI chat assistant</span>
-                    to help patients recall memories, manage tasks, and stay engaged.
-                  </li>
-                  <li>
-                    Implemented
-                    <span class="font-semibold" style="color: var(--primary-text);">face recognition</span>
-                    to identify family members, enhancing emotional connections and user safety.
-                  </li>
-                  <li>
-                    Built real-time
-                    <span class="font-semibold" style="color: var(--primary-text);">location sharing</span>
-                    and
-                    <span class="font-semibold" style="color: var(--primary-text);">live caretaker tracking</span>
-                    for safety and coordination.
-                  </li>
-                  <li>
-                    Added
-                    <span class="font-semibold" style="color: var(--primary-text);">Firebase</span>
-                    backend for authentication, cloud storage, and push notifications.
-                  </li>
-                </ul>
-                <div class="mt-6 flex justify-start">
-                    <a href="https://github.com/ajmal-uk/dementia-virtual-memory" target="_blank" rel="noopener noreferrer" class="font-medium py-2 px-5 rounded-lg transition-all duration-300 transform hover:scale-105"
-                       style="background-color: var(--fab-bg); color: var(--fab-text);">
-                        View on GitHub
-                    </a>
-                </div>
-              </div>
-            </div>
+         
         
           </div>
         </section>
@@ -681,18 +682,14 @@ function closeResumeModal() {
     </div>
 
     <div class="md:w-2/3" style="transform: translateZ(20px);">
-      <h3 class="text-xl font-semibold text-blue-400">
-        Data Science & Analytics Intern – Future Interns
+      <h3 class="text-xl font-semibold text-zinc-200">
+        Data Science & Analytics Intern | Future Interns
       </h3>
 
       <p class="text-sm mt-1 mb-2" style="color: var(--secondary-text);">
         Internship Program | Nov 2025
       </p>
 
-      <p style="color: var(--secondary-text);">
-        Selected for a month-long fellowship-based internship focused on hands-on experience in data science,
-        analytics, and real-world problem solving through structured training and guided assignments.
-      </p>
     </div>
 
   </div>
@@ -706,14 +703,14 @@ function closeResumeModal() {
             <div class="space-y-8 stagger-in max-w-4xl mx-auto">
                 <div class="card p-6 rounded-xl"  >
                     <div style="transform: translateZ(20px);">
-                        <h3 class="text-xl font-semibold text-blue-400">Master of Computer Application (MCA)</h3>
+                        <h3 class="text-xl font-semibold text-zinc-200">Master of Computer Application (MCA)</h3>
                         <p style="color: var(--secondary-text);">APJ Abdul Kalam Technological University</p>
                         <p class="text-sm" style="color: var(--secondary-text); opacity: 0.7;">Expected May 2027</p>
                     </div>
                 </div>
                 <div class="card p-6 rounded-xl"  >
                      <div style="transform: translateZ(20px);">
-                        <h3 class="text-xl font-semibold text-blue-400">Bachelor of Science - Computer Science</h3>
+                        <h3 class="text-xl font-semibold text-zinc-200">Bachelor of Science - Computer Science</h3>
                         <p style="color: var(--secondary-text);">Kannur University</p>
                         <p class="text-sm" style="color: var(--secondary-text); opacity: 0.7;">Graduated May 2025 | CGPA: 8.752</p>
                     </div>
@@ -740,15 +737,45 @@ function closeResumeModal() {
       </div>
 
       <div class="md:w-2/3" style="transform: translateZ(20px);">
-        <h3 class="text-xl font-semibold text-blue-400">IBM Data Science Professional Certificate</h3>
-        <p class="mt-2" style="color: var(--secondary-text);">
-          Completed certification covering data analysis, data visualization, and machine learning using Python.
-        </p>
+        <h3 class="text-xl font-semibold text-zinc-200">Data Science | IBM</h3>
       </div>
 
     </div>
 
     <!-- Certificate 2 -->
+    <div class="card p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 cursor-pointer"
+            -reset="false">
+
+      <div class="md:w-1/3 flex-shrink-0">
+        <img src="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/ExploratoryDataAnalysis.jpg"
+             alt="Exploratory Data Analysis for Machine Learning"
+             class="certificate-img rounded-lg object-cover w-full shadow-lg"
+             data-modal-src="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/ExploratoryDataAnalysis.jpg">
+      </div>
+
+      <div class="md:w-2/3" style="transform: translateZ(20px);">
+        <h3 class="text-xl font-semibold text-zinc-200">Exploratory Data Analysis for Machine Learning| IBM</h3>
+      </div>
+
+    </div>
+    
+    <!-- Certificate 3 -->
+    <div class="card p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 cursor-pointer"
+            -reset="false">
+
+      <div class="md:w-1/3 flex-shrink-0">
+        <img src="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/IntroToGit.jpg"
+             alt="Imtroduction To Git and GitHub"
+             class="certificate-img rounded-lg object-cover w-full shadow-lg"
+             data-modal-src="https://raw.githubusercontent.com/amarjithanand/amarjithanand.github.io/refs/heads/main/IntroToGit.jpg">
+      </div>
+
+      <div class="md:w-2/3" style="transform: translateZ(20px);">
+        <h3 class="text-xl font-semibold text-zinc-200">Introduction to Git and GitHub | Google</h3>
+      </div>
+
+    </div>
+    <!-- Certificate 4 -->
     <div class="card p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 cursor-pointer"
             -reset="false">
 
@@ -760,14 +787,11 @@ function closeResumeModal() {
       </div>
 
       <div class="md:w-2/3" style="transform: translateZ(20px);">
-        <h3 class="text-xl font-semibold text-blue-400">Deloitte Data Analytics Job Simulation</h3>
-        <p class="mt-2" style="color: var(--secondary-text);">
-          Completed virtual job simulation focused on data analytics and forensic technology.
-        </p>
+        <h3 class="text-xl font-semibold text-zinc-200">Data Analytics Job Simulation | Deloitte</h3>
       </div>
 
     </div>
-<!-- Certificate 3 -->
+<!-- Certificate 5 -->
 <div class="card p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 cursor-pointer"
             -reset="false">
 
@@ -779,10 +803,7 @@ function closeResumeModal() {
       </div>
 
       <div class="md:w-2/3" style="transform: translateZ(20px);">
-        <h3 class="text-xl font-semibold text-blue-400">Data Science and Machine Learning Internship</h3>
-        <p class="mt-2" style="color: var(--secondary-text);">
-           A hands-on internship focused on practical learning in Artificial Intelligence and Generative AI through mentor-led sessions and guided projects.
-        </p>
+        <h3 class="text-xl font-semibold text-zinc-200">Data Science and Machine Learning Internship | YBI Foundation</h3>
       </div>
 
     </div>
@@ -808,7 +829,7 @@ function closeResumeModal() {
                         <textarea name="message" id="message" rows="5" placeholder="Your Message" class="form-input" required></textarea>
                     </div>
                     <div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50">
+                        <button type="submit" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ">
                             Send Message
                         </button>
                     </div>
