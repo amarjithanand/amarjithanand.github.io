@@ -7,7 +7,7 @@
  * If you host the static files elsewhere, use the full published URL,
  * e.g. "https://your-app.lovable.app/api/public/contact". */
 window.CONTACT_CONFIG = {
-  endpoint: "https://YOUR-PUBLISHED-SITE.lovable.app/api/public/contact",
+  endpoint: "https://amarjithanand-contact-form-submition-support.lovable.app/api/public/contact",
   timeoutMs: 15000
 };
 
