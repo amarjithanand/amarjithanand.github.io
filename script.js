@@ -58,8 +58,9 @@ window.PORTFOLIO = {
     {
       verified: true,
       role: "Technical Lead — College Magazine Committee",
-      org: "MG College, Iritty",
+      org: "Mahatma Gandhi College, Kannur",
       duration: "2023 – 24",
+      current : true,
       description: "Served as Technical Lead for the college magazine, managing overall technical aspects, while contributing as Sub-Editor for the department magazine, assisting with content editing and maintaining publication quality.",
       tags: ["Leadership", "Digital Content", "Coordination"]
     },
