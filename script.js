@@ -1,16 +1,16 @@
 /* Portfolio content — edit here. Only resume-verified or user-supplied details. */
 window.PORTFOLIO = {
   education: [
-    { title: "Master of Computer Applications (MCA)", institution: "APJ Abdul Kalam Technological University", duration: "2025 — Present", details: "Currently pursuing", current: true },
-    { title: "Bachelor of Science in Computer Science", institution: "Kannur University", duration: "2022 — May 2025", details: "CGPA 8.75" },
-    { title: "Higher Secondary Education (+2)", institution: "Rajeev Gandhi Memorial Higher Secondary School, Mokeri", duration: "", details: "96%", stream: "" },
-    { title: "SSLC", institution: "Rajeev Gandhi Memorial Higher Secondary School, Mokeri", duration: "", details: "95%" }
+    { title: "Master of Computer Applications (MCA)", institution: "College of Engineering, Trivandrum", duration: "2025 - Present", details: "Currently pursuing", current: true },
+    { title: "Bachelor of Science in Computer Science", institution: "Mahatma Gandhi College, Kannur", duration: "2022 - 2025", details: "CGPA 8.75" },
+    { title: "Higher Secondary Education (+2)", institution: "Rajeev Gandhi Memorial Higher Secondary School, Mokeri", duration: "2020 - 2022", details: "96%", stream: "" },
+    { title: "SSLC", institution: "Rajeev Gandhi Memorial Higher Secondary School, Mokeri", duration: "2019 - 2020", details: "100%" }
   ],
   skills: [
-    { title: "Programming Languages", items: ["Python", "Java", "C++", "JavaScript", "SQL"] },
-    { title: "Data Science & AI", items: ["Machine Learning", "Deep Learning", "Natural Language Processing", "Data Analysis", "Semantic Embeddings", "Sentence Transformers", "Model Evaluation"] },
-    { title: "Web & App Development", items: ["FastAPI", "HTML", "CSS", "React", "Node.js", "Flutter"] },
-    { title: "Tools & Platforms", items: ["Git", "GitHub", "Gmail API", "Firebase", "Cloud Firestore", "Google Cloud", "Google Colab", "Netlify", "Cloudflare"] }
+    { title: "Programming Languages", items: ["Python", "Java", "C++", "SQL"] },
+    { title: "Data Science & AI", items: ["Machine Learning", "Deep Learning", "Natural Language Processing",  "Semantic Embeddings", "Sentence Transformers"] },
+    { title: "Web & App Development", items: ["FastAPI", "HTML", "CSS", "Flutter"] },
+    { title: "Tools & Platforms", items: ["Git", "GitHub", "Firebase", "Firestore"] }
   ],
 
   // repo / demo: set to a real URL to show the link; leave "" to hide it.
